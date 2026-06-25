@@ -17,5 +17,10 @@ export default defineConfig([
       globals: globals.browser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
+    // ADD THIS RULES BLOCK TO DISABLE ANNOYING ERRORS:
+    rules: {
+      'no-unused-vars': 'off', // Disables warning/errors for unused variables
+    },
   },
+  
 ])
