@@ -1,6 +1,12 @@
+import React from 'react'
+import Navbar from '../components/navbar'
+
 function Home() {
   return (
-    <div>Home page</div>
+    <div className='min-h-screen overflow-hidden bg-white text-black '>
+      <Navbar/> 
+
+    </div>
   )
 }
 
