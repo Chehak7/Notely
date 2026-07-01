@@ -1,8 +1,25 @@
 import React from 'react'
 import { motion } from "motion/react"
 import logo from "../assets/logo.png"
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setUserData } from '../redux/userSlice'
+import axios from 'axios'
+import { serverUrl } from '../App'
 
 function Footer() {
+    const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const handleSignOut = async () => {
+    try {
+      await axios.get(serverUrl + "/api/auth/logout", { withCredentials: true })
+      dispatch(setUserData(null))
+      navigate("/auth")
+    } catch (error) {
+      console.log(error)
+
+    }
+  }
     return (
         <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -40,16 +57,37 @@ function Footer() {
                     <div className='text-center'>
                         <h1 className='text-sm font-semibold text-white mb-4'>Quick Links</h1> 
                         <ul className='space-y-2 text-sm'>
-                            <li className='text-gray-300 hover:text-white transition-colors'>
+                            <li onClick={() => navigate("/Notes")} className='text-gray-300 hover:text-white transition-colors'>
                                 Notes
                             </li>
-                            <li className='text-gray-300 hover:text-white transition-colors'>
-                                Histroy
+                            <li onClick={() => navigate("/history")} className='text-gray-300 hover:text-white transition-colors'>
+                                History
                             </li>
-
+                            <li onClick={() => navigate("/Pricing")} className='text-gray-300 hover:text-white transition-colors'>
+                                Add Credits
+                            </li>
+                        </ul>
+                    </div>
+                    <div className='text-center'>
+                        <h1 className='text-sm font-semibold text-white mb-4'>Quick Links</h1> 
+                        <ul className='space-y-2 text-sm'>
+                            <li onClick={() => navigate("/auth")} className='text-gray-300 hover:text-white transition-colors'>
+                                SignIn
+                            </li>
+                            <li onClick={handleSignOut} className='text-red-400 hover:text-red-300 transition-colors'>
+                                SignOut
+                            </li>
+                            <li className='text-gray-300 hover:text-white transition-colors'>
+                                Support Email: info@studywithai.com
+                            </li>
                         </ul>
                     </div>
 
+                </div>
+                <div className="my-6 h-px bg-white/10">
+                   <p className='text-center text-xs text-gray-500'>
+                     &copy; {new Date().getFullYear()} StudyWithAI. All rights reserved.
+                     </p> 
                 </div>
 
         </motion.div>

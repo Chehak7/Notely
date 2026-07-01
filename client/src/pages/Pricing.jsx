@@ -1,11 +1,11 @@
 import React from 'react'
 
-function Notes() {
+function pricing() {
   return (
-    <div>
+    <div> 
         
     </div>
   )
 }
 
-export default Notes
+export default pricing
