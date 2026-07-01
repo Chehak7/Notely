@@ -1,5 +1,6 @@
 import React from 'react'
 import Navbar from '../components/navbar'
+import Footer from '../components/Footer'
 import { AnimatePresence, motion } from 'motion/react'
 import img from "../assets/img1.png"
 function Home() {
@@ -87,6 +88,8 @@ function Home() {
         <Feature icon="📄" title="Free PDF download" desc="Download clean , printable PDFs instantly." />
  
       </section>
+
+      <Footer />
 
     </div>
   )

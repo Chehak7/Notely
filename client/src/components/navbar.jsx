@@ -1,4 +1,4 @@
-import React , {useState} from 'react'
+import React, { useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useDispatch, useSelector } from 'react-redux'
 import logo from "../assets/logo.png"
@@ -11,16 +11,16 @@ import { useNavigate } from 'react-router-dom'
 function Navbar() {
   const { userData } = useSelector((state) => state.user)
   const credits = userData?.credits ?? 100  //free credits for user - 100
-  const [showCredits,setShowCredits] = useState(false)
-  const [showProfile,setShowProfile] = useState(false)
+  const [showCredits, setShowCredits] = useState(false)
+  const [showProfile, setShowProfile] = useState(false)
   const navigate = useNavigate()
   const dispatch = useDispatch()
   const handleSignOut = async () => {
-    try{
-      await axios.get(serverUrl+ "/api/auth/logout", {withCredentials:true})
+    try {
+      await axios.get(serverUrl + "/api/auth/logout", { withCredentials: true })
       dispatch(setUserData(null))
       navigate("/auth")
-    }catch (error){
+    } catch (error) {
       console.log(error)
 
     }
@@ -36,17 +36,22 @@ function Navbar() {
       <div className="flex items-center justify-between px-4 sm:px-8 py-4">
         <div className="flex items-center gap-3">
           <img src={logo} alt="examnotes" className='w-14 h-14' />
-          <span className="hidden sm:inline text-xl font-semibold text-white">StudyWithAI</span>
+          <span className="text-lg font-semibold
+                            bg-gradient-to-br from-white via-gray-300 to-white
+                            bg-clip-text text-transparent"
+            style={{ textShadow: "0 6px 18px rgba(0,0,0,0.4)" }}>
+            StudyWith <span className="text-gray-400"> AI </span>
+          </span>
         </div>
         <div className="flex items-center gap-2 sm:gap-4 text-base text-gray-200">
           <a href="/auth" className="transition hover:text-pink-400 text-lg font-medium">Login</a>
-          
+
           {/* Credits button + dropdown wrapper */}
-          
+
           <div className="relative">
 
             <motion.div
-              onClick={() => {setShowCredits(!showCredits);setShowProfile(false)}}
+              onClick={() => { setShowCredits(!showCredits); setShowProfile(false) }}
               whileHover={{ scale: 1.05, backgroundColor: '#ec4899', color: '#fff' }}
               className='flex cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white shadow-md transition-colors'
             >
@@ -77,11 +82,11 @@ function Navbar() {
                 >
                   <h4 className='font semibold mb-2'>Buy Credits </h4>
                   <p className='text-sm text-gray-300 mb-4'>Use credits to generate AI notes,diagram & PDFs.</p>
-                <button onClick={() => setShowCredits(false)} className='w-full py-2 rounded-lg 
+                  <button onClick={() => setShowCredits(false)} className='w-full py-2 rounded-lg 
                   bg-gradient-to-br from-white to-gray-200
                   text-black font-semibold
                   hover:opacity-90'
-                > Buy more Credits </button>
+                  > Buy more Credits </button>
 
                 </motion.div>
               }
@@ -91,9 +96,9 @@ function Navbar() {
           <div className="relative">
 
             <motion.div
-              onClick={() => {setShowProfile(!showProfile);setShowCredits(false)}}
-              whileHover={{ scale: 1.1}}
-              whileTap={{scale:0.97}}
+              onClick={() => { setShowProfile(!showProfile); setShowCredits(false) }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.97 }}
               className='flex items-center justify-center gap-1
               px-4 py-2 rounded-full
               bg-white/10
@@ -101,8 +106,8 @@ function Navbar() {
               text-white text-sm
               shadow-md
               cursor-pointer '>
-              <span className='text-lg'>{userData?.name.slice(0,1).toUpperCase()}</span>
-              
+              <span className='text-lg'>{userData?.name.slice(0, 1).toUpperCase()}</span>
+
             </motion.div>
             <AnimatePresence>
               {showProfile &&
@@ -118,16 +123,16 @@ function Navbar() {
                     shadow-[0_25px_60px_rgba(0,0,0,0.7)]
                     p-4 text-white'
                 >
-                  <MenuItem text= "History" onClick = {() => setShowProfile(false) }/>
-                  <div className= "h-px bg-white/10 mx-3"></div>
-                  <MenuItem text="sign out" red onClick={handleSignOut}/>
-          
+                  <MenuItem text="History" onClick={() => setShowProfile(false)} />
+                  <div className="h-px bg-white/10 mx-3"></div>
+                  <MenuItem text="sign out" red onClick={handleSignOut} />
+
 
                 </motion.div>
               }
             </AnimatePresence>
 
-            
+
           </div>
 
 
@@ -137,16 +142,15 @@ function Navbar() {
   )
 }
 
-function MenuItem ({onClick, text, red}) {
-  return(
-    <div onClick={onClick} 
+function MenuItem({ onClick, text, red }) {
+  return (
+    <div onClick={onClick}
       className={`w-full text-left px-5 py-3 text-sm
       transition-colors rounded-lg
-      ${
-        red
-        ? "text-red-400 hover:bg-red-500/10"
-        : "text-gray-200 hover:bg-white/10"
-      }
+      ${red
+          ? "text-red-400 hover:bg-red-500/10"
+          : "text-gray-200 hover:bg-white/10"
+        }
     `}>
       {text}
     </div>
