@@ -2,11 +2,16 @@ import React from 'react'
 import { motion } from 'motion/react'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import Topicform from '../components/Topicform'
+import { useState } from 'react'
 
 function Notes() {
   const navigate = useNavigate()
    const { userData } = useSelector((state) => state.user)
   const credits = userData.credits
+  const[loading, setLoading] = useState(false)
+  const[result, setResult] = useState(null)
+  const[error, setError] = useState("")
   return (
     <div className='min-h-screen bg-gradient-to-br from-gray-100 to-gray-100 px-6 py-8'>
       <motion.header
@@ -61,6 +66,11 @@ function Notes() {
        </div>
        
       </motion.header>
+
+      <motion.div 
+      className="mb-12"> 
+         <Topicform loading={loading} setResult={setResult} setLoading={setLoading} setError={setError} />
+      </motion.div>
     </div>
   )
 }
