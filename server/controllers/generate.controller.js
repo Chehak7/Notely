@@ -1,5 +1,7 @@
-import { generateGeminiResponse } from "../services/gemini.services"
-import { buildPrompt } from "../utils/promptBuilder"
+import { generateGeminiResponse } from "../services/gemini.services.js"
+import { buildPrompt } from "../utils/promptBuilder.js"
+import UserModel from "../models/user.model.js"
+import Notes from "../models/notes.model.js"
 
 export const generateNotes = async (req, res) => {
     try {
@@ -10,7 +12,7 @@ export const generateNotes = async (req, res) => {
             revisionMode = false,
             includeDiagram = false,
             includeCharts = false
-        } = req.body()
+        } = req.body
         if (!topic) {
             return res.status(400).json({ message: "Topic is required" })
         }
@@ -44,11 +46,30 @@ export const generateNotes = async (req, res) => {
             examType,
             revisionMode,
             includeDiagram,
-            includeCharts
+            includeCharts,
+            content:AIresponse
+        })
+
+        user.credits -= 10;
+        if(user.credits <= 0) user.isCreditAvailable = false;
+
+        if(!Array.isArray(user.notes)){
+            user.notes = [];
         }
-        )
+        user.notes.push(notes._id);
+
+        await user.save();
+        return res.status(200).json({
+            data: AIresponse,
+            noteID: notes._id,
+            creditsLeft: user.credits
+        })
 
     } catch (error) {
-        console.log()
+        console.log(error);
+        res.status (500).json({
+            error:"AI generation failed",
+            message: error.message
+        });
     }
 }
