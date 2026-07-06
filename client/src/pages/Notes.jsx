@@ -4,6 +4,8 @@ import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Topicform from '../components/Topicform'
 import { useState } from 'react'
+import FinalResult from '../components/FinalResult'
+import Sidebar from '../components/Sidebar'
 
 function Notes() {
   const navigate = useNavigate()
@@ -21,24 +23,22 @@ function Notes() {
 
         className="mb-10
        rounded-2xl
-       bg-black/80 backdrop-blur-xl
-       border border-white/10
+       bg-zinc-800
+       border border-zinc-700
        px-8 py-6
-       shadow-[0_20px_45px_rgba(0,0,0,0.6)] items-start
+       shadow-lg items-start
        flex md:items-center justify-between gap-4 flex-col md:flex-row">
 
         <div onClick={() => navigate("/")} className='cursor-pointer'>
-          <h1 className="text-2xl font-bold
-       bg-linear-to-r from-pink-500 via-fuchsia-500 to-purple-500
-       bg-clip-text text-transparent">StudyWithAI</h1>
-          <p className="text-sm text-white/100 mt-2">A platform to enhance your learning experience with AI-powered tools and resources.</p>
+          <h1 className="text-2xl font-bold text-white">StudyWith AI</h1>
+          <p className="text-sm text-gray-300 mt-2">AI-powered exam-oriented notes & revision</p>
         </div>
 
         <div className='flex items-center gap-4 flex-wrap'>
           <button className='flex items-center gap-2
         px-4 py-2 rounded-full
-        bg-white/10
-        border border-white/20
+        bg-black/40
+        border border-zinc-700
         text-white text-sm' onClick={() => navigate("/Pricing")}>
             <span className='text-xl'>💠</span>
             <span>{credits}</span>
@@ -72,21 +72,57 @@ function Notes() {
         <Topicform loading={loading} setResult={setResult} setLoading={setLoading} setError={setError} />
       </motion.div>
 
-     <motion.div 
-     whileHover={ { scale: 1.02 }}
-     className="h-64
+      {loading && (
+        <motion.div
+          animate={{ opacity: [0.4, 1, 0.4] }}
+          transition={{ repeat: Infinity, duration: 1.2 }}
+          className="text-center text-black font-medium mb-6">
+          Generating exam-focused notes...
+        </motion.div>
+      )}
+
+      {error && (
+        <div
+          className="mb-6 text-center text-red-600 font-medium">
+        </div>
+      )}
+
+      {!result && <motion.div
+        whileHover={{ scale: 1.02 }}
+        className="h-64
         rounded-2xl
        flex flex-col items-center justify-center
        bg-white/60 backdrop-blur-lg
        border border-dashed border-gray-300
        text-gray-500
        shadow-inner">
-        <span className = "text-4xl mb-3">📝</span>
-        <p className = "text-sm">
+        <span className="text-4xl mb-3">📝</span>
+        <p className="text-sm">
           Generated Notes will appear here.
         </p>
 
-     </motion.div>
+      </motion.div>}
+
+      {result && <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className='flex flex-col
+     lg:grid lg:grid-cols-4
+     gap-6'>
+        <div className='lg:col-span-1'>
+          <Sidebar result={result.data} />
+        </div>
+
+        <div className='lg:col-span-3
+      rounded-2xl
+      bg-white
+      shadow-[0_15px_40px_rgba(0,0,0,0.15)]
+      p-6'>
+
+          <FinalResult result={result.data} />
+        </div>
+      </motion.div>}
     </div>
   )
 }

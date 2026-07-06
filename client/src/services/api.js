@@ -22,5 +22,6 @@ export const generateNotes = async (payload) => {
 
     } catch (error){
         console.log(error)
+        throw error;
     }
 }

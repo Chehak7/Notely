@@ -35,7 +35,7 @@ function Topicform({ setResult, setLoading, loading, setError }) {
                 includeDiagram,
                 includeCharts
             })
-            setResult(result.data)
+            setResult(result)
             setLoading(false)
             setClassLevel("")
             setTopic("")
@@ -44,7 +44,7 @@ function Topicform({ setResult, setLoading, loading, setError }) {
             setRevisionMode(false)
             setIncludeDiagram(false)
 
-            if(typeof result.creditsLeft === "number"){
+            if (typeof result.creditsLeft === "number") {
                 dispatch(updateCredits(result.creditsLeft))
 
             }
@@ -94,14 +94,13 @@ function Topicform({ setResult, setLoading, loading, setError }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="rounded-2xl
-      bg-gradient-to-br from-black/90 via-black/80 to-black/90
-      backdrop-blur-2xl
-      border border-white/10
-      shadow-[0_20px_60px_rgba(0,0,0,0.75)]
+      bg-zinc-800
+      border border-zinc-700
+      shadow-lg
       p-8 space-y-6 text-white">
             <input type="text" className='w-full p-3 rounded-xl
-         bg-white/10 backdrop-blur-lg
-         border border-white/20
+         bg-black/20
+         border border-zinc-700
          placeholder-gray-400 
          text-white 
          focus:outline-none focus:ring-2 focus:ring-white/30' placeholder='Enter topic (e.g. Web Development)'
@@ -110,30 +109,30 @@ function Topicform({ setResult, setLoading, loading, setError }) {
             />
 
             <input type="text" className='w-full p-3 rounded-xl
-         bg-white/10 backdrop-blur-lg
-         border border-white/20
+         bg-black/20
+         border border-zinc-700
          placeholder-gray-400 
          text-white 
          focus:outline-none focus:ring-2 focus:ring-white/30'
-                placeholder='Class / Level (e.g. Class 10, Undergraduate, Postgraduate)'
+                placeholder='Class / Level (e.g. Class 10)'
                 onChange={(e) => setClassLevel(e.target.value)}
                 value={classLevel}
             />
 
             <input type="text" className='w-full p-3 rounded-xl
-         bg-white/10 backdrop-blur-lg
-         border border-white/20
+         bg-black/20
+         border border-zinc-700
          placeholder-gray-400 
          text-white 
          focus:outline-none focus:ring-2 focus:ring-white/30'
-                placeholder='Enter type (e.g. CBSE, ICSE, JEE, NEET)'
+                placeholder='Exam Type (e.g. CBSE, JEE, NEET)'
                 onChange={(e) => setExamType(e.target.value)}
                 value={examType}
             />
-            <div className='flex flex-col md:flex-row gap-6'>
+            <div className='flex flex-row gap-8 items-center'>
                 <Toggle label="Exam Revision Mode" checked={revisionMode} onChange={() => setRevisionMode(!revisionMode)} />
                 <Toggle label="Include Diagram" checked={includeDiagram} onChange={() => setIncludeDiagram(!includeDiagram)} />
-                <Toggle label="Include Chart" checked={includeCharts} onChange={() => setIncludeCharts(!includeCharts)} />
+                <Toggle label="Include Charts" checked={includeCharts} onChange={() => setIncludeCharts(!includeCharts)} />
             </div>
 
             <motion.button
@@ -146,8 +145,8 @@ function Topicform({ setResult, setLoading, loading, setError }) {
             flex items-center justify-center gap-3
             transition
             ${loading
-                        ? "bg-gray-500 text-gray-600 cursor-not-allowed"
-                        : "bg-gradient-to-br from-white to-gray-200 text-black shadow-[0_15px_35px_rgba(0,0,0,0.4)]"
+                        ? "bg-zinc-600 text-zinc-400 cursor-not-allowed"
+                        : "bg-white text-black shadow-md hover:bg-gray-100"
                     }`}>
                 {loading ? "Generating Notes..." : "Generate Notes"}
 
@@ -155,12 +154,12 @@ function Topicform({ setResult, setLoading, loading, setError }) {
             {loading && <div className='mt-4 space-y-2'>
                 <div className='w-full h-2 rounded-full bg-white/10 overflow-hidden'>
                     <motion.div
-                    initial={{width:0}}
-                    animate={{width:`${progress}%`}}
-                    transition={{ease: "easeOut", duration:0.6}} 
-                    className='h-full bg-gradient-to-r from-green-400 via-emerald-400
+                        initial={{ width: 0 }}
+                        animate={{ width: `${progress}%` }}
+                        transition={{ ease: "easeOut", duration: 0.6 }}
+                        className='h-full bg-gradient-to-r from-green-400 via-emerald-400
                     to-green-500'>
-                        </motion.div> 
+                    </motion.div>
                 </div>
                 <div className='flex justify-betweent text-xs text-gray-300'>
                     <span>{progressText}</span>

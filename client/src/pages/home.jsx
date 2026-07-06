@@ -46,15 +46,16 @@ function Home() {
             </motion.p>
 
             <motion.button
-              onClick ={()=>navigate("/Notes")}
-              whileHover={{scale: 1.07 }}
+              onClick={() => navigate("/Notes")}
+              whileHover={{ scale: 1.07 }}
               whileTap={{ scale: 0.97 }}
-              className='mt-10 px-10 py-3 rounded-xl
-                          flex items-center gap-3
-                          bg-gradient-to-br from-black/90 via-black/80 to-black/90
-                          border border-white/10
-                          text-white font-semibold text-lg
-                          shadow-[0_25px_60px_rgba(0,0,0,0.7)]'
+              style={{ transform: "translateZ(50px)" }}
+              className='relative z-50 mt-10 px-10 py-3 rounded-xl
+             flex items-center gap-3
+             bg-gradient-to-br from-black/90 via-black/80 to-black/90
+             border border-white/10
+             text-white font-semibold text-lg
+             shadow-[0_25px_60px_rgba(0,0,0,0.7)]'
             >
 
               Get started
@@ -67,27 +68,27 @@ function Home() {
         <motion.div initial={{ opacity: 0, x: 60 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.7 }}
-          whileHover={{ y: -12, rotateX: 8, rotateY: -8 , scale:1.05}}
+          whileHover={{ y: -12, rotateX: 8, rotateY: -8, scale: 1.05 }}
           className="transform-gpu"
           style={{ transformStyle: "preserve-3d" }}>
 
-            <div className='overflow-hidden'>
-              <img src= {img} alt='img'
-                style={{transform: "translateZ(35px)"}}/>
-            </div>
- 
+          <div className='overflow-hidden'>
+            <img src={img} alt='img'
+              style={{ transform: "translateZ(35px)" }} />
+          </div>
+
         </motion.div>
 
       </section>
 
       {/* bottom */}
       <section className='max-w-6xl mx-auto px-8 py-32 grid grid-cols-1
-      md:grid-cols-4 gap-10'> 
-        <Feature icon="📚" title="Exam notes" desc="High-yield exam-oriented notes with revision points. "/>
+      md:grid-cols-4 gap-10'>
+        <Feature icon="📚" title="Exam notes" desc="High-yield exam-oriented notes with revision points. " />
         <Feature icon="🗂️" title="Project notes" desc="Well-structured content for assignments & projects." />
         <Feature icon="📊" title="Charts & Graphs" desc="Auto generated Visual representations of data for clarity." />
         <Feature icon="📄" title="Free PDF download" desc="Download clean , printable PDFs instantly." />
- 
+
       </section>
 
       <Footer />
