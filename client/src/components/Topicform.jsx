@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { motion } from "motion/react"
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { generateNotes } from '../services/api';
+import { updateCredits } from '../redux/userSlice';
+
 
 function Topicform({ setResult, setLoading, loading, setError }) {
 
@@ -11,7 +13,10 @@ function Topicform({ setResult, setLoading, loading, setError }) {
     const [examType, setExamType] = useState("");
     const [revisionMode, setRevisionMode] = useState(false);
     const [includeDiagram, setIncludeDiagram] = useState(false);
-    const [includeChart, setIncludeChart] = useState(false);
+    const [includeCharts, setIncludeCharts] = useState(false);
+    const [progress, setProgress] = useState(0);
+    const [progressText, setProgressText] = useState("");
+    const dispatch = useDispatch();
 
     const handleSubmit = async () => {
         if (!topic.trim()) {
@@ -22,14 +27,27 @@ function Topicform({ setResult, setLoading, loading, setError }) {
         setLoading(true)
         setResult(null)
         try {
-            const result = generateNotes({topic,
+            const result = await generateNotes({
+                topic,
                 classLevel,
                 examType,
                 revisionMode,
                 includeDiagram,
-                includeChart})
-                setResult(result.data)
-                setLoading(false)
+                includeCharts
+            })
+            setResult(result.data)
+            setLoading(false)
+            setClassLevel("")
+            setTopic("")
+            setExamType("")
+            setIncludeCharts(false)
+            setRevisionMode(false)
+            setIncludeDiagram(false)
+
+            if(typeof result.creditsLeft === "number"){
+                dispatch(updateCredits(result.creditsLeft))
+
+            }
 
         } catch (error) {
             console.log(error)
@@ -38,6 +56,38 @@ function Topicform({ setResult, setLoading, loading, setError }) {
 
         }
     }
+
+    useEffect(() => {
+        if (!loading) return;
+
+        let value = 0;
+
+        const interval = setInterval(() => {
+            value += Math.random() * 8
+
+            setProgress(value);
+
+            if (value >= 95) {
+                setProgressText("Almost done...");
+                clearInterval(interval);
+            } else if (value > 70) {
+                setProgressText("Finalizing notes...");
+            } else if (value > 40) {
+                setProgressText("Processing content...");
+            } else {
+                setProgressText("Generating notes...");
+            }
+
+            setProgress(Math.floor(value))
+
+        }, 700);
+
+        return () => {
+            clearInterval(interval);
+            setProgress(0);
+            setProgressText("");
+        };
+    }, [loading]);
 
     return (
         <motion.div
@@ -83,11 +133,11 @@ function Topicform({ setResult, setLoading, loading, setError }) {
             <div className='flex flex-col md:flex-row gap-6'>
                 <Toggle label="Exam Revision Mode" checked={revisionMode} onChange={() => setRevisionMode(!revisionMode)} />
                 <Toggle label="Include Diagram" checked={includeDiagram} onChange={() => setIncludeDiagram(!includeDiagram)} />
-                <Toggle label="Include Chart" checked={includeChart} onChange={() => setIncludeChart(!includeChart)} />
+                <Toggle label="Include Chart" checked={includeCharts} onChange={() => setIncludeCharts(!includeCharts)} />
             </div>
 
             <motion.button
-            onClick ={handleSubmit}
+                onClick={handleSubmit}
                 whileHover={!loading ? { scale: 1.02 } : {}}
                 whileTap={!loading ? { scale: 0.95 } : {}}
                 disabled={loading}
@@ -97,12 +147,29 @@ function Topicform({ setResult, setLoading, loading, setError }) {
             transition
             ${loading
                         ? "bg-gray-500 text-gray-600 cursor-not-allowed"
-                        : "bg-gradient-to-br from-white to-gray-200 text-black shadow-[0_15px_35px_rgba(0,0,0,0.6)] hover:opacity-90 gap-4"
+                        : "bg-gradient-to-br from-white to-gray-200 text-black shadow-[0_15px_35px_rgba(0,0,0,0.4)]"
                     }`}>
                 {loading ? "Generating Notes..." : "Generate Notes"}
 
             </motion.button>
-
+            {loading && <div className='mt-4 space-y-2'>
+                <div className='w-full h-2 rounded-full bg-white/10 overflow-hidden'>
+                    <motion.div
+                    initial={{width:0}}
+                    animate={{width:`${progress}%`}}
+                    transition={{ease: "easeOut", duration:0.6}} 
+                    className='h-full bg-gradient-to-r from-green-400 via-emerald-400
+                    to-green-500'>
+                        </motion.div> 
+                </div>
+                <div className='flex justify-betweent text-xs text-gray-300'>
+                    <span>{progressText}</span>
+                    <span>{progress}%</span>
+                </div>
+                <p className='text-xs text-gray-400 text-center'>
+                    This may take upto 2-5 minutes. please do not close or refresh the page.
+                </p>
+            </div>}
 
 
         </motion.div>

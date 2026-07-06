@@ -12,11 +12,11 @@ export const generateNotes = async (req, res) => {
             revisionMode = false,
             includeDiagram = false,
             includeCharts = false
-        } = req.body
+        } = req.body;
         if (!topic) {
             return res.status(400).json({ message: "Topic is required" })
         }
-        const user = await UserModel.findById(req.user.id)
+        const user = await UserModel.findById(req.userID)
         if (!user) {
             return res.status(400).json({ message: "User is not found" })
         }
@@ -37,7 +37,7 @@ export const generateNotes = async (req, res) => {
             includeCharts
         })
 
-        const AIresponse = generateGeminiResponse(prompt)
+        const AIresponse = await generateGeminiResponse(prompt)
 
         const notes = await Notes.create({
             user: user._id,
@@ -47,13 +47,13 @@ export const generateNotes = async (req, res) => {
             revisionMode,
             includeDiagram,
             includeCharts,
-            content:AIresponse
+            content: AIresponse
         })
 
         user.credits -= 10;
-        if(user.credits <= 0) user.isCreditAvailable = false;
+        if (user.credits <= 0) user.isCreditAvailable = false;
 
-        if(!Array.isArray(user.notes)){
+        if (!Array.isArray(user.notes)) {
             user.notes = [];
         }
         user.notes.push(notes._id);
@@ -67,8 +67,8 @@ export const generateNotes = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status (500).json({
-            error:"AI generation failed",
+        res.status(500).json({
+            error: "AI generation failed",
             message: error.message
         });
     }

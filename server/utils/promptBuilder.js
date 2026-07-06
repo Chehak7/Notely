@@ -56,9 +56,9 @@ REVISION MODE RULES (CRITICAL):
 
 IMPORTANCE RULES:
 - Divide sub-topics into THREE categories:
-  - Very Important Topics
-  - Important Topics
-  - Frequently Asked Topics
+  - ⭐️ Very Important Topics
+  - ⭐️⭐️ Important Topics
+  - ⭐️⭐️⭐️ Frequently Asked Topics
 - All three categories MUST be present
 - Base importance on exam frequency and weightage
 
@@ -102,11 +102,11 @@ STRICT JSON FORMAT(DO NOT CHANGE):
 
 {
   "subtopics": {
-    "veryImportant": [],
-    "important": [],
-    "frequentlyAsked": []
+    "⭐️": [],
+    "⭐️⭐️": [],
+    "⭐️⭐️⭐️": []
   },
-  "importance": {"veryImportant"|,"important"|,"frequentlyAsked",
+  "importance": {" ⭐️ | ⭐️⭐️ | ⭐️⭐️⭐️",
   "notes": "string",
   "revisionPoints": [],
   "questions": {

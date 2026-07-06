@@ -1,10 +1,10 @@
 
-const gemini_URL = "https://generativelanguage.googleapis.com/v1beta/interactions";
+const gemini_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3-flash-preview:generateContent";
 
 export const generateGeminiResponse = async (prompt) => {
 
     try {
-        const response = await fetch(`${gemini_URL}?key = ${process.env.GEMINI_API_KEY}`, {
+        const response = await fetch(`${gemini_URL}?key=${process.env.GEMINI_API_KEY}`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
