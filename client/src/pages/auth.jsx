@@ -90,7 +90,7 @@ function Auth() {
           <Feature icon="📚" title="Exam notes" desc="High-quality exam notes for all subjects." />
           <Feature icon="🗂️" title="Project notes" desc="Well-structured documentation for assignments & projects." />
           <Feature icon="📊" title="Charts & Graphs" desc="Visual representations of data for better understanding." />
-          <Feature icon="📄" title="Free PDF download" desc="Download all your learning materials in PDF format instantly." />
+          <Feature icon="📥 " title="Free PDF download" desc="Download all your learning materials in PDF format instantly." />
 
 
         </div>

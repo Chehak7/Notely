@@ -46,13 +46,15 @@ REVISION MODE RULES (CRITICAL):
   - revisionPoints MUST summarize ALL important facts
 
 - If REVISION MODE is OFF:
-  - Notes must be DETAILED but exam-focused
+  - Notes must be DETAILED and exam-focused
   - Each topic should include:
     - definition
-    - short explanation
-    - examples (if applicable)
-  - Paragraph length: max 2-4 lines
-  - No storytelling, no extra theory
+    - thorough explanation
+    - clear examples where applicable
+    - exam tips or common pitfalls
+  - Aim for 5-7 lines per subtopic, using multiple bullets when needed
+  - Use concise language, but include enough detail to understand the concept
+  - No storytelling or unrelated theory
 
 IMPORTANCE RULES:
 - Divide sub-topics into THREE categories:

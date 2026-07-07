@@ -87,7 +87,7 @@ function Home() {
         <Feature icon="📚" title="Exam notes" desc="High-yield exam-oriented notes with revision points. " />
         <Feature icon="🗂️" title="Project notes" desc="Well-structured content for assignments & projects." />
         <Feature icon="📊" title="Charts & Graphs" desc="Auto generated Visual representations of data for clarity." />
-        <Feature icon="📄" title="Free PDF download" desc="Download clean , printable PDFs instantly." />
+        <Feature icon="📥 " title="Free PDF download" desc="Download clean , printable PDFs instantly." />
 
       </section>
 
