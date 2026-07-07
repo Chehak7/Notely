@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import MermaidSetup from './MermaidSetup'
+import RechartSetUp from './RechartSetup'
 
 const markdownComponents = {
   h1: ({ children }) => (
@@ -60,11 +61,10 @@ function FinalResult({ result }) {
         <div className="flex gap-3">
           <button
             onClick={() => setQuickRevision(!quickRevision)}
-            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${
-              quickRevision
-                ? 'bg-green-600 text-white'
-                : 'bg-green-100 text-green-700 hover:bg-green-200'
-            }`}>
+            className={`px-4 py-2 rounded-lg text-sm font-medium transition ${quickRevision
+              ? 'bg-green-600 text-white'
+              : 'bg-green-100 text-green-700 hover:bg-green-200'
+              }`}>
             {quickRevision ? 'Exit Revision Mode' : 'Quick Revision (5 min)'}
           </button>
 
@@ -118,6 +118,24 @@ function FinalResult({ result }) {
             If you need this diagram for future reference or revision, you can save it by taking a screenshot.
           </p>
         </section>
+      )}
+
+
+      {result.charts?.length > 0 &&
+        <section>
+          <SectionHeader icon="📈" title=" Visual Charts" color="indigo" />
+          <RechartSetUp charts={result.charts} />
+          <p className="mt-3 text-xs text-gray-500 italic">
+            If you need this Chart for future reference or revision, you can save it by taking a screenshot.
+          </p>
+
+        </section>}
+
+
+      {result.charts && result.charts.length === 0 && (
+        <p className="text-sm text-gray-400 italic">
+           📉 Charts are not relevant for this topic.
+        </p>
       )}
 
       <section>
