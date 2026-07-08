@@ -53,8 +53,9 @@ REVISION MODE RULES (CRITICAL):
     - clear examples where applicable
     - exam tips or common pitfalls
   - Aim for 5-7 lines per subtopic, using multiple bullets when needed
-  - Use concise language, but include enough detail to understand the concept
+    - Use concise language, but include enough detail to understand the concept
   - No storytelling or unrelated theory
+
 
 IMPORTANCE RULES:
 - Divide sub-topics into THREE categories:
