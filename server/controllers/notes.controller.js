@@ -1,5 +1,5 @@
-import UserModel from "../models/user.model";
-import NotesModel from "../models/notes.model";
+import UserModel from "../models/user.model.js";
+import NotesModel from "../models/notes.model.js";
 
 export const getMyNotes = async (req, res) => {
     try {
