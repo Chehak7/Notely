@@ -1,18 +1,24 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { serverUrl } from '../App'
-import { motion } from 'motion/react'
+import { AnimatePresence, motion } from 'motion/react'
 import { Navigate, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { GiHamburgerMenu } from "react-icons/gi";
 import Sidebar from '../components/Sidebar';
+import FinalResult from '../components/FinalResult'
 
 function History() {
   const navigate = useNavigate()
   const { userData } = useSelector((state) => state.user)
   const credits = userData.credits
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(() => {
+    return typeof window !== 'undefined' && window.innerWidth >= 1024
+  })
   const [topics, setTopics] = useState([])
+  const [selectedNote, setSelectedNote] = useState(null);
+  const [loading, setloading] = useState(false);
+
   useEffect(() => {
     const myNotes = async () => {
       try {
@@ -27,6 +33,28 @@ function History() {
     myNotes()
   }, [])
 
+  const openNotes = async (noteId) => {
+    setloading(true)
+    try {
+      const res = await axios.get(serverUrl + `/api/notes/${noteId}`, { withCredentials: true })
+      setSelectedNote(res.data.content)
+      setloading(false)
+    } catch (error) {
+      console.log(error)
+      setloading(false)
+
+    }
+  }
+
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSidebarOpen(window.innerWidth >= 1024)
+    }
+    window.addEventListener('resize', handleResize)
+    return () => window.removeEventListener('resize', handleResize)
+  }, [])
+
   return (
     <div className='min-h-screen bg-gradient-to-br from-gray-100 to-gray-100 px-6 py-8'>
       <motion.header
@@ -34,12 +62,12 @@ function History() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6 }}
         className="mb-10
-        rounded-2x1
-        bg-black/80 backdrop-blur-x1
-        border border-white/10
+        rounded-2xl
+        bg-zinc-800
+        border border-zinc-700
         px-8 py-6 items-start
        flex justify-between md:items-center gap-4 flex-wrap
-       shadow-[0_20px_45px_rgba(0,0,0,0.6)]">
+       shadow-lg">
 
         <div onClick={() => navigate("/")} className='cursor-pointer'>
           <h1 className="text-2xl font-bold text-white">StudyWith AI</h1>
@@ -48,7 +76,7 @@ function History() {
 
         <div className='flex items-center gap-4 flex-wrap'>
 
-          <button onClick={() => setIsSidebarOpen(!isSidebarOpen)} className='text-white text-2xl'> <GiHamburgerMenu /> </button>
+          {!isSidebarOpen && <button onClick={() => setIsSidebarOpen(true)} className='lg:hidden text-white text-2xl'> <GiHamburgerMenu /> </button>}
           <button className='flex items-center gap-2
                 px-4 py-2 rounded-full
                 bg-black/40
@@ -63,12 +91,104 @@ function History() {
             >
               ➕
             </motion.span>
-            </button>
+          </button>
 
         </div>
 
       </motion.header>
-      {isSidebarOpen && <Sidebar setIsSidebarOpen={setIsSidebarOpen} />}
+
+
+      <div className='grid grid-cols-1 lg:grid-cols-4 gap-6'>
+        <AnimatePresence>
+
+          {(isSidebarOpen) &&
+            <motion.div
+              initial={{ x: -320 }}
+              animate={{ x: 0 }}
+              exit={{ x: -320 }}
+              transition={{ type: "spring", stiffness: 260, damping: 30 }}
+              className='fixed lg:static
+            top-0 left-0 z-50 lg:z-auto
+            w-90 lg:w-auto
+            h-full lg:h-[75vh]
+            lg:rounded-2xl
+            lg:col-span-1
+            bg-zinc-800
+            border border-zinc-700
+            shadow-lg
+            p-5
+            overflow-y-auto custom-scrollbar'>
+              <button onClick={() => setIsSidebarOpen(false)}
+                className='lg:hidden text-white mb-4'>
+                ⬅️ Back
+              </button>
+
+              <div className='mb-4 space-y-11 text-start'>
+                <button onClick={() => navigate("/notes")} className='w-full px-4 py-3 
+                rounded-xl text-sm font-medium text-gray-200 bg-white/10 hover:bg-white/20
+                flex items-center gap-2'>
+                  <span className='text-indigo-400 text-lg'>+</span> New Notes
+                </button>
+
+                <hr className="border-zinc-700 mb-4" />
+
+                <h2 className='mb-4 text-lg font-bold text-white flex items-center gap-2'>
+                  <span className='text-xl'>📁</span> Your Notes
+                </h2>
+                
+                {topics.length === 0 && (
+                  <p className="text-sm text-gray-400"> No notes created yet</p>
+                )}
+                
+                <ul className='space-y-4'>
+                  {topics.map((t, i) => (
+                    <li key={i} onClick={() => { openNotes(t._id) }}
+                      className='cursor-pointer rounded-xl p-4 bg-zinc-700/50 border border-zinc-600 hover:bg-zinc-700 transition'>
+
+                      <p className='text-base font-bold text-white mb-3'>{t.topic}</p>
+
+                      <div className='flex flex-wrap gap-2 text-[11px] mb-3'>
+                        {t.classLevel && <span className='px-2 py-1 rounded-md bg-indigo-500/20 text-indigo-300' >ClassLevel : {t.classLevel}</span>}
+                        {t.examType && <span className='px-2 py-1 rounded-md bg-indigo-500/20 text-indigo-300'> {t.examType}</span>}
+                      </div>
+
+                      <div className='flex gap-3 text-xs text-gray-300 font-medium'>
+                        {t.revisionMode && <span className='flex items-center gap-1'>⚡ Revision</span>}
+                        {t.includeDiagram && <span className='flex items-center gap-1'>📊 Diagram</span>}
+                        {t.includeCharts && <span className='flex items-center gap-1'>📈 Chart</span>}
+                      </div>
+
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+            </motion.div>}
+
+        </AnimatePresence>
+
+        <motion.div
+          initial={{ opacity: 0, y: -15 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className='lg:col-span-3
+        rounded-2xl bg-white
+        shadow-lg
+        p-6
+        min-h-[75vh] relative overflow-hidden'>
+
+          {loading && <div className="absolute inset-0 flex items-center justify-center text-gray-500 font-medium">Loading notes...</div>}
+          {!loading && !selectedNote && (
+            <div className="absolute inset-0 flex items-center justify-center text-gray-400 font-medium"> 
+              Select a topic from the Sidebar
+            </div>
+          )}
+          {!loading && selectedNote && <FinalResult result={selectedNote} />}
+
+        </motion.div>
+
+      </div>
+
     </div>
   )
 }
