@@ -28,7 +28,7 @@ export const pdfDownload = async (req, res) => {
             try {
                 const pdfData = Buffer.concat(chunks);
                 res.setHeader("Content-Type", "application/pdf");
-                res.setHeader("Content-Disposition", 'attachment; filename="StudyWithAI.pdf"');
+                res.setHeader("Content-Disposition", 'attachment; filename="Notely.pdf"');
                 res.send(pdfData);
             } catch (err) {
                 console.error("Error sending PDF:", err);
@@ -50,7 +50,7 @@ export const pdfDownload = async (req, res) => {
         });
 
         // Title
-        doc.fontSize(20).text("StudyWith AI", { align: "center" });
+        doc.fontSize(20).text("Notely", { align: "center" });
         doc.moveDown();
         doc.fontSize(14).text(`Importance: ${importance}`);
         doc.moveDown();

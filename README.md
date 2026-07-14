@@ -1,4 +1,4 @@
-# StudyWith AI 📚✨
+# Notely 📚✨
 
 ![Lavender Mist Theme](https://img.shields.io/badge/Theme-Lavender%20Mist-B9AEE0?style=flat-square)
 ![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
@@ -7,7 +7,7 @@
 ![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=flat-square&logo=mongodb)
 ![Gemini AI](https://img.shields.io/badge/AI-Google%20Gemini-4285F4?style=flat-square&logo=google)
 
-**StudyWith AI** is an intelligent, full-stack web application designed to help students and professionals generate high-yield, exam-oriented notes in seconds. Powered by Google's Gemini AI, it creates structured notes, diagrams, and charts based on any topic, class level, and exam type.
+**Notely** is an intelligent, full-stack web application designed to help students and professionals generate high-yield, exam-oriented notes in seconds. Powered by Google's Gemini AI, it creates structured notes, diagrams, and charts based on any topic, class level, and exam type.
 
 ## ✨ Features
 
@@ -45,7 +45,7 @@
 This is a monorepo containing both the client and server.
 
 ```
-StudywithAI/
+Notely/
 ├── client/                 # React Frontend
 │   ├── src/
 │   │   ├── assets/         # Images and static assets
@@ -79,8 +79,8 @@ StudywithAI/
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/StudywithAI.git
-cd StudywithAI
+git clone https://github.com/yourusername/Notely.git
+cd Notely
 ```
 
 ### 2. Setup the Backend

@@ -38,7 +38,7 @@ function Auth() {
        px-8 py-6">
 
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold font-[Poppins] text-[#372F52]">StudyWithAI</h1>
+          <h1 className="text-2xl font-bold font-[Poppins] text-[#372F52]">Notely</h1>
           <a href="/" className="transition hover:text-[#A79CD6] text-lg font-medium text-[#372F52]">Home</a>
         </div>
 

@@ -31,7 +31,7 @@ function Notes() {
        flex md:items-center justify-between gap-4 flex-col md:flex-row">
 
         <div onClick={() => navigate("/")} className='cursor-pointer'>
-          <h1 className="text-2xl font-bold font-[Poppins] text-[#372F52]">StudyWith AI</h1>
+          <h1 className="text-2xl font-bold font-[Poppins] text-[#372F52]">Notely</h1>
           <p className="text-sm text-[#6B647F] mt-2">AI-powered exam-oriented notes & revision</p>
         </div>
 

@@ -42,7 +42,7 @@ function Footer() {
                                 StudyWith <span className="text-[#6B647F]"> AI </span>
                             </span>
                         </div>
-                        <p className="text-sm text-[#6B647F] max-w-sm">StudyWithAI helps students generate exam-focused notes,
+                        <p className="text-sm text-[#6B647F] max-w-sm">Notely helps students generate exam-focused notes,
                              revision material, diagrams and printable PDFs using AI. </p>
 
                     </motion.div>
@@ -70,7 +70,7 @@ function Footer() {
                                 SignOut
                             </li>
                             <li className='text-[#6B647F] hover:text-[#A79CD6] cursor-pointer transition-colors'>
-                                Support Email: info@studywithai.com
+                                Support Email: info@notely.com
                             </li>
                         </ul>
                     </div>
@@ -78,7 +78,7 @@ function Footer() {
                 </div>
                 <div className="my-6 h-px bg-[#E4DEF3]">
                    <p className='text-center text-xs text-[#8A8398] mt-6'>
-                     &copy; {new Date().getFullYear()} StudyWithAI. All rights reserved.
+                     &copy; {new Date().getFullYear()} Notely. All rights reserved.
                      </p> 
                 </div>
 
