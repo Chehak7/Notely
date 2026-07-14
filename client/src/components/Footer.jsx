@@ -28,64 +28,56 @@ function Footer() {
             transition={{ duration: 0.6 }}
             className='z-10 mx-6 mb-6 mt-24
             rounded-2xl
-            bg-gradient-to-br from-black/90 via-black/80 to-black/90 
-            backdrop-blur-2xl
-            border border-white/10
-            px-8 py-8
-            shadow-[0_25px_60px_rgba(0,0,0,0.7)]'>
+            bg-[#EDE9F9] 
+            border border-[#E4DEF3]
+            px-8 py-8'>
 
                 <div className='grid grid-cols-1 md:grid-cols-3 gap-8 items-start'>
                     <motion.div 
-                    whileHover={{rotateX:6, rotateY:-6}}
-                    className="flex flex-col gap-4 transform-gpu"
-                    style = {{transformStyle: "preserve-3d"}}>
-                        <div className="flex items-center gap-3 cursor-pointer"
-                        style={{ transform:"translate(20px)"}}>
+                    className="flex flex-col gap-4">
+                        <div className="flex items-center gap-3 cursor-pointer">
                             <img src={logo} alt="logo" className='h-9 w-9 object-contain '/>
                             <span className="
-                            text-lg font-semibold
-                            bg-gradient-to-br from-white via-gray-300 to-white
-                            bg-clip-text text-transparent" 
-                            style={{ textShadow: "0 6px 18px rgba(0,0,0,0.4)"}}>
-                                StudyWith <span className="text-gray-400"> AI </span>
+                            text-2xl font-[Poppins] font-bold text-[#372F52]">
+                                StudyWith <span className="text-[#6B647F]"> AI </span>
                             </span>
                         </div>
-                        <p className="text-sm text-gray-300 max-w-sm">StudyWithAI helps students generate exam-focused notes,
+                        <p className="text-sm text-[#6B647F] max-w-sm">StudyWithAI helps students generate exam-focused notes,
                              revision material, diagrams and printable PDFs using AI. </p>
 
                     </motion.div>
                     <div className='text-center'>
-                        <h1 className='text-sm font-semibold text-white mb-4'>Quick Links</h1> 
+                        <h1 className='text-sm font-[Poppins] font-bold text-[#372F52] mb-4'>Quick Links</h1> 
                         <ul className='space-y-2 text-sm'>
-                            <li onClick={() => navigate("/Notes")} className='text-gray-300 hover:text-white transition-colors'>
+                            <li onClick={() => navigate("/Notes")} className='text-[#6B647F] hover:text-[#A79CD6] cursor-pointer transition-colors'>
                                 Notes
                             </li>
-                            <li onClick={() => navigate("/history")} className='text-gray-300 hover:text-white transition-colors'>
+                            <li onClick={() => navigate("/history")} className='text-[#6B647F] hover:text-[#A79CD6] cursor-pointer transition-colors'>
                                 History
                             </li>
-                            <li onClick={() => navigate("/Pricing")} className='text-gray-300 hover:text-white transition-colors'>
+                            <li onClick={() => navigate("/Pricing")} className='text-[#6B647F] hover:text-[#A79CD6] cursor-pointer transition-colors'>
                                 Add Credits
                             </li>
                         </ul>
                     </div>
                     <div className='text-center'>
-                        <h1 className='text-sm font-semibold text-white mb-4'>Quick Links</h1> 
+                        <h1 className='text-sm font-[Poppins] font-bold text-[#372F52] mb-4'>Quick Links</h1> 
                         <ul className='space-y-2 text-sm'>
-                            <li onClick={() => navigate("/auth")} className='text-gray-300 hover:text-white transition-colors'>
+                            <li onClick={() => navigate("/auth")} className='text-[#6B647F] hover:text-[#A79CD6] cursor-pointer transition-colors'>
                                 SignIn
                             </li>
-                            <li onClick={handleSignOut} className='text-red-400 hover:text-red-300 transition-colors'>
+                            <li onClick={handleSignOut} className='text-[#C07B9F] hover:text-[#A36890] cursor-pointer transition-colors'>
                                 SignOut
                             </li>
-                            <li className='text-gray-300 hover:text-white transition-colors'>
+                            <li className='text-[#6B647F] hover:text-[#A79CD6] cursor-pointer transition-colors'>
                                 Support Email: info@studywithai.com
                             </li>
                         </ul>
                     </div>
 
                 </div>
-                <div className="my-6 h-px bg-white/10">
-                   <p className='text-center text-xs text-gray-500'>
+                <div className="my-6 h-px bg-[#E4DEF3]">
+                   <p className='text-center text-xs text-[#8A8398] mt-6'>
                      &copy; {new Date().getFullYear()} StudyWithAI. All rights reserved.
                      </p> 
                 </div>

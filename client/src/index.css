@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+@theme {
+  --color-honey-page: #F7F4FC;
+  --color-honey-surface: #FBF9F6;
+  --color-honey-nav: #EDE9F9;
+  --color-honey-accent: #B9AEE0;
+  --color-honey-accent-hover: #A79CD6;
+  --color-honey-accent-light: #F6DDE8;
+  --color-honey-text: #372F52;
+  --color-honey-text-sec: #6B647F;
+  --color-honey-text-muted: #8A8398;
+  --color-honey-border: #E4DEF3;
+  --color-honey-success: #7FA870;
+  --color-honey-error: #C07B9F;
+  
+  --font-marcellus: "Poppins", sans-serif;
+  --font-nunito: "Inter", sans-serif;
+}
+
 
 * {
 scrollbar-width: none;  /* Firefox */ 

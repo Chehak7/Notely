@@ -6,8 +6,7 @@ import axios from 'axios'
 import { serverUrl } from '../App'
 import { setUserData } from '../redux/userSlice'
 import { useNavigate } from 'react-router-dom'
-
-
+import { LuDiamond, LuPlus } from 'react-icons/lu';
 function Navbar() {
   const { userData } = useSelector((state) => state.user)
   const credits = userData?.credits ?? 100  //free credits for user - 100
@@ -31,20 +30,17 @@ function Navbar() {
       initial={{ opacity: 0, y: -15 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 1.5 }}
-      className="relative z-20 mx-6 mt-6 rounded-2xl bg-gradient-to-br from-black/90 via-black/80 to-black/90 backdrop-blur-2xl border border-white/10 shadow-[0_22px_55px_rgba(0,0,0,0.75)]"
+      className="relative z-20 mx-6 mt-6 rounded-2xl bg-[#EDE9F9] border border-[#E4DEF3]"
     >
       <div className="flex items-center justify-between px-4 sm:px-8 py-4">
         <div className="flex items-center gap-3">
           <img src={logo} alt="examnotes" className='w-14 h-14' />
-          <span className="text-lg font-semibold
-                            bg-gradient-to-br from-white via-gray-300 to-white
-                            bg-clip-text text-transparent"
-            style={{ textShadow: "0 6px 18px rgba(0,0,0,0.4)" }}>
-            StudyWith <span className="text-gray-400"> AI </span>
+          <span className="text-2xl font-bold font-[Poppins] text-[#372F52]">
+            StudyWith <span className="text-[#6B647F]"> AI </span>
           </span>
         </div>
-        <div className="flex items-center gap-2 sm:gap-4 text-base text-gray-200">
-          <a href="/auth" className="transition hover:text-pink-400 text-lg font-medium">Login</a>
+        <div className="flex items-center gap-2 sm:gap-4 text-base text-[#6B647F]">
+          <a href="/auth" className="transition hover:text-[#A79CD6] text-lg font-medium">Login</a>
 
           {/* Credits button + dropdown wrapper */}
 
@@ -52,17 +48,17 @@ function Navbar() {
 
             <motion.div
               onClick={() => { setShowCredits(!showCredits); setShowProfile(false) }}
-              whileHover={{ scale: 1.05, backgroundColor: '#ec4899', color: '#fff' }}
-              className='flex cursor-pointer items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-sm text-white shadow-md transition-colors'
+              whileHover={{ scale: 1.05 }}
+              className='flex cursor-pointer items-center gap-2 rounded-xl border border-[#E4DEF3] bg-[#FBF9F6] px-4 py-2 text-sm text-[#372F52] transition-colors hover:bg-white'
             >
-              <span className='text-xl'>💠</span>
+              <span className='text-xl text-[#B9AEE0]'><LuDiamond /></span>
               <span>{credits}</span>
               <motion.span
                 whileHover={{ scale: 1.2 }}
                 whileTap={{ scale: 0.97 }}
-                className='ml-2 h-5 w-5 flex items-center justify-center rounded-full bg-white text-xs font-bold'
+                className='ml-2 h-5 w-5 flex items-center justify-center rounded-full bg-[#B9AEE0] text-[#372F52] text-xs font-bold'
               >
-                ➕
+                <LuPlus size={12} />
               </motion.span>
             </motion.div>
 
@@ -75,18 +71,17 @@ function Navbar() {
                   transition={{ duration: 0.2 }}
                   className='absolute top-full right-[-50px] mt-2 w-64
                     rounded-2xl
-                    bg-black/90 backdrop-blur-xl
-                    border border-white/10
-                    shadow-[0_25px_60px_rgba(0,0,0,0.7)]
-                    p-4 text-white'
+                    bg-[#FBF9F6]
+                    border border-[#E4DEF3]
+                    p-4 text-[#372F52]'
                 >
-                  <h4 className='font semibold mb-2'>Buy Credits </h4>
-                  <p className='text-sm text-gray-300 mb-4'>Use credits to generate AI notes,diagram & PDFs.</p>
+                  <h4 className='font-semibold font-[Poppins] mb-2'>Buy Credits </h4>
+                  <p className='text-sm text-[#6B647F] mb-4'>Use credits to generate AI notes, diagram & PDFs.</p>
                   <button onClick={() => {setShowCredits(false);navigate("/Pricing")}} 
-                  className='w-full py-2 rounded-lg 
-                  bg-gradient-to-br from-white to-gray-200
-                  text-black font-semibold
-                  hover:opacity-90'
+                  className='w-full py-2 rounded-xl 
+                  bg-[#B9AEE0]
+                  text-[#372F52] font-semibold
+                  hover:bg-[#A79CD6]'
                   > Buy more Credits </button>
 
                 </motion.div>
@@ -101,13 +96,12 @@ function Navbar() {
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.97 }}
               className='flex items-center justify-center gap-1
-              px-4 py-2 rounded-full
-              bg-white/10
-              border border-white/20
-              text-white text-sm
-              shadow-md
-              cursor-pointer '>
-              <span className='text-lg'>{userData?.name.slice(0, 1).toUpperCase()}</span>
+              px-4 py-2 rounded-xl
+              bg-[#FBF9F6]
+              border border-[#E4DEF3]
+              text-[#372F52] text-sm
+              cursor-pointer hover:bg-white'>
+              <span className='text-lg font-bold'>{userData?.name.slice(0, 1).toUpperCase()}</span>
 
             </motion.div>
             <AnimatePresence>
@@ -119,13 +113,12 @@ function Navbar() {
                   transition={{ duration: 0.2 }}
                   className='absolute right-0 mt-4 w-64
                     rounded-2xl
-                    bg-black/90 backdrop-blur-xl
-                    border border-white/10
-                    shadow-[0_25px_60px_rgba(0,0,0,0.7)]
-                    p-4 text-white'
+                    bg-[#FBF9F6]
+                    border border-[#E4DEF3]
+                    p-4 text-[#372F52]'
                 >
                   <MenuItem text="History" onClick={() => {setShowProfile(false);navigate("/history")}} />
-                  <div className="h-px bg-white/10 mx-3"></div>
+                  <div className="h-px bg-[#E4DEF3] mx-3 my-2"></div>
                   <MenuItem text="sign out" red onClick={handleSignOut} />
 
 
@@ -146,11 +139,11 @@ function Navbar() {
 function MenuItem({ onClick, text, red }) {
   return (
     <div onClick={onClick}
-      className={`w-full text-left px-5 py-3 text-sm
-      transition-colors rounded-lg
+      className={`w-full text-left px-5 py-3 text-sm font-medium
+      transition-colors rounded-xl cursor-pointer
       ${red
-          ? "text-red-400 hover:bg-red-500/10"
-          : "text-gray-200 hover:bg-white/10"
+          ? "text-[#C07B9F] hover:bg-[#C07B9F]/10"
+          : "text-[#6B647F] hover:bg-[#E4DEF3]/50"
         }
     `}>
       {text}

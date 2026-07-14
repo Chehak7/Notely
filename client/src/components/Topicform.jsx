@@ -94,37 +94,36 @@ function Topicform({ setResult, setLoading, loading, setError }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="rounded-2xl
-      bg-zinc-800
-      border border-zinc-700
-      shadow-lg
-      p-8 space-y-6 text-white">
+      bg-[#FBF9F6]
+      border border-[#E4DEF3]
+      p-8 space-y-6 text-[#372F52]">
             <input type="text" className='w-full p-3 rounded-xl
-         bg-black/20
-         border border-zinc-700
-         placeholder-gray-400 
-         text-white 
-         focus:outline-none focus:ring-2 focus:ring-white/30' placeholder='Enter topic (e.g. Web Development)'
+         bg-[#F7F4FC]
+         border border-[#E4DEF3]
+         placeholder-[#8A8398] 
+         text-[#372F52] 
+         focus:outline-none focus:ring-2 focus:ring-[#B9AEE0]' placeholder='Enter topic (e.g. Web Development)'
                 onChange={(e) => setTopic(e.target.value)}
                 value={topic}
             />
 
             <input type="text" className='w-full p-3 rounded-xl
-         bg-black/20
-         border border-zinc-700
-         placeholder-gray-400 
-         text-white 
-         focus:outline-none focus:ring-2 focus:ring-white/30'
+         bg-[#F7F4FC]
+         border border-[#E4DEF3]
+         placeholder-[#8A8398] 
+         text-[#372F52] 
+         focus:outline-none focus:ring-2 focus:ring-[#B9AEE0]'
                 placeholder='Class / Level (e.g. Class 10)'
                 onChange={(e) => setClassLevel(e.target.value)}
                 value={classLevel}
             />
 
             <input type="text" className='w-full p-3 rounded-xl
-         bg-black/20
-         border border-zinc-700
-         placeholder-gray-400 
-         text-white 
-         focus:outline-none focus:ring-2 focus:ring-white/30'
+         bg-[#F7F4FC]
+         border border-[#E4DEF3]
+         placeholder-[#8A8398] 
+         text-[#372F52] 
+         focus:outline-none focus:ring-2 focus:ring-[#B9AEE0]'
                 placeholder='Exam Type (e.g. CBSE, JEE, NEET)'
                 onChange={(e) => setExamType(e.target.value)}
                 value={examType}
@@ -145,27 +144,26 @@ function Topicform({ setResult, setLoading, loading, setError }) {
             flex items-center justify-center gap-3
             transition
             ${loading
-                        ? "bg-zinc-600 text-zinc-400 cursor-not-allowed"
-                        : "bg-white text-black shadow-md hover:bg-gray-100"
+                        ? "bg-[#E4DEF3] text-[#6B647F] cursor-not-allowed"
+                        : "bg-[#B9AEE0] text-[#372F52] hover:bg-[#A79CD6]"
                     }`}>
                 {loading ? "Generating Notes..." : "Generate Notes"}
 
             </motion.button>
             {loading && <div className='mt-4 space-y-2'>
-                <div className='w-full h-2 rounded-full bg-white/10 overflow-hidden'>
+                <div className='w-full h-2 rounded-full bg-[#E4DEF3] overflow-hidden'>
                     <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
                         transition={{ ease: "easeOut", duration: 0.6 }}
-                        className='h-full bg-gradient-to-r from-green-400 via-emerald-400
-                    to-green-500'>
+                        className='h-full bg-[#A79CD6]'>
                     </motion.div>
                 </div>
-                <div className='flex justify-betweent text-xs text-gray-300'>
+                <div className='flex justify-between text-xs text-[#6B647F]'>
                     <span>{progressText}</span>
                     <span>{progress}%</span>
                 </div>
-                <p className='text-xs text-gray-400 text-center'>
+                <p className='text-xs text-[#8A8398] text-center'>
                     This may take upto 2-5 minutes. please do not close or refresh the page.
                 </p>
             </div>}
@@ -181,25 +179,24 @@ function Toggle({ label, checked, onChange }) {
             <motion.div
                 animate={{
                     backgroundColor: checked
-                        ? "rgba(34,197,94,0.35)" //green when-ON
-                        : " rgba(255,255,255,0.15)" //gray when-OFF
+                        ? "#A79CD6"
+                        : "#E4DEF3"
                 }}
                 transition={{ duration: 0.25 }}
                 className='relative w-12 h-6 rounded-full 
-            border border-white/20
-            backdrop-blur-lg'>
+            border border-[#E4DEF3]'>
 
                 <motion.div
                     layout
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    className='absolute top-0.5 w-5 h-5 rounded-full bg-white shadow-[0_5px_15px_rgba(0,0,0,0.5)]'
+                    className='absolute top-0.5 w-5 h-5 rounded-full bg-white shadow-sm'
                     style={{
                         left: checked ? "1.6rem" : "0.25rem",
                     }}>
 
                 </motion.div>
             </motion.div>
-            <span className={`text-lg transition-colors ${checked ? "text-green-300" : "text-gray-300"
+            <span className={`text-lg transition-colors font-medium ${checked ? "text-[#372F52]" : "text-[#6B647F]"
                 }`}>{label}</span>
 
         </div>

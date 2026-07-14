@@ -1,17 +1,18 @@
 import React from 'react'
 import { Bar, BarChart, Cell, Line, LineChart,Pie ,PieChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts"
+import { LuChartBar } from 'react-icons/lu';
 
 function RechartSetUp({ charts }) {
     if (!charts || charts.length === 0) return null;
-    const COLORS = ["#6366f1", "22c55e", "#f59e0b", "ef4444", "06b6d4"];
+    const COLORS = ["#B9AEE0", "#A79CD6", "#F6DDE8", "#6B647F", "#C07B9F"];
     return (
         <div className='space-y-8'>
 
             {charts.map((chart, index) => (
-                <div key={index} className='border border-gray-200 rounded-xl p-4 bg-white'>
+                <div key={index} className='border border-[#E4DEF3] rounded-xl p-4 bg-[#FBF9F6]'>
 
-                    <h4 className='font-semibold text-gray-800 mb-3'>
-                        📊 {chart.title}
+                    <h4 className='font-semibold font-[Poppins] text-[#372F52] mb-3 flex items-center gap-2'>
+                        <LuChartBar className="text-[#B9AEE0]" /> {chart.title}
                     </h4>
 
                     <div className='h-72'>
@@ -38,8 +39,8 @@ function RechartSetUp({ charts }) {
                                     <YAxis />
                                     <Tooltip />
                                     <Line type="monotone"
-                                        datakey="value"
-                                        stroke="#6366f1"
+                                        dataKey="value"
+                                        stroke="#B9AEE0"
                                         strokeWidth={3} />
                                 </LineChart>
                             )}
@@ -49,7 +50,7 @@ function RechartSetUp({ charts }) {
                                     <Tooltip />
                                     <Pie data={chart.data}
 
-                                        datakey="value"
+                                        dataKey="value"
                                         nameKey="name"
                                         outerRadius={100}
                                         label>
