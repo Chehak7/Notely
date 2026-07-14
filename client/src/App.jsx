@@ -7,7 +7,7 @@ import Notes from './pages/Notes.jsx'
 import Pricing from './pages/Pricing.jsx'
 import { getCurrentUser } from './services/api'
 import { useDispatch, useSelector } from 'react-redux'
-export const serverUrl = "https://studywithaiserver.onrender.com"
+export const serverUrl = "https://notelyserver.onrender.com"
 
 function App() {
   const dispatch = useDispatch()

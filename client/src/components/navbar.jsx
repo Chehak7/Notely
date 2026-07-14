@@ -36,7 +36,7 @@ function Navbar() {
         <div className="flex items-center gap-3">
           <img src={logo} alt="examnotes" className='w-14 h-14' />
           <span className="text-2xl font-bold font-[Poppins] text-[#372F52]">
-            StudyWith <span className="text-[#6B647F]"> AI </span>
+            Notely
           </span>
         </div>
         <div className="flex items-center gap-2 sm:gap-4 text-base text-[#6B647F]">

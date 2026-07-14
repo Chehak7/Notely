@@ -39,7 +39,7 @@ function Footer() {
                             <img src={logo} alt="logo" className='h-9 w-9 object-contain '/>
                             <span className="
                             text-2xl font-[Poppins] font-bold text-[#372F52]">
-                                StudyWith <span className="text-[#6B647F]"> AI </span>
+                                Notely
                             </span>
                         </div>
                         <p className="text-sm text-[#6B647F] max-w-sm">Notely helps students generate exam-focused notes,
