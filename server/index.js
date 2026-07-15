@@ -14,7 +14,7 @@ const app = express()
 app.use(cors(
   {
     origin: [
-      "https://studywithaiclient.onrender.com"
+      "https://notelyclient.onrender.com"
     ].filter(Boolean),
     credentials : true,
     methods : ["GET","POST","PUT","DELETE","OPTIONS"],
