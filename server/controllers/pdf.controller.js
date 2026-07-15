@@ -50,7 +50,7 @@ export const pdfDownload = async (req, res) => {
         });
 
         // Title
-        doc.fontSize(20).text("Notely", { align: "center" });
+        doc.fontSize(20).text("StudyWith AI", { align: "center" });
         doc.moveDown();
         doc.fontSize(14).text(`Importance: ${importance}`);
         doc.moveDown();
