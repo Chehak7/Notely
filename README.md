@@ -1,44 +1,43 @@
-# Notely 📚✨
+# Notely 🚀
 
-![Lavender Mist Theme](https://img.shields.io/badge/Theme-Lavender%20Mist-B9AEE0?style=flat-square)
-![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)
-![Vite](https://img.shields.io/badge/Vite-8-646CFF?style=flat-square&logo=vite)
-![Node.js](https://img.shields.io/badge/Node.js-Express-339933?style=flat-square&logo=nodedotjs)
-![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=flat-square&logo=mongodb)
-![Gemini AI](https://img.shields.io/badge/AI-Google%20Gemini-4285F4?style=flat-square&logo=google)
+**Notely** is an AI-powered EdTech SaaS platform designed to enhance the learning experience. It allows students and professionals to instantly generate high-yield exam notes, project documentation, revision points, and visual data representations (charts & diagrams) in seconds. 
 
-**Notely** is an intelligent, full-stack web application designed to help students and professionals generate high-yield, exam-oriented notes in seconds. Powered by Google's Gemini AI, it creates structured notes, diagrams, and charts based on any topic, class level, and exam type.
+Featuring a modern, distraction-free interface, Notely keeps you focused on what matters most: your learning.
+
+---
 
 ## ✨ Features
 
-- **🤖 AI-Powered Note Generation:** Generate comprehensive notes using Google Gemini AI tailored to specific class levels (High School, College, etc.) and exam types (AP, SAT, University Finals, etc.).
-- **📊 Auto-Generated Visuals:** Automatically creates data representations (Recharts) and structural diagrams (Mermaid.js) to enhance understanding.
-- **⚡ Revision Mode:** Quickly toggle "Revision Mode" to get summarized, high-yield bullet points perfect for last-minute cramming.
-- **🔐 Secure Authentication:** Seamless Google OAuth sign-in powered by Firebase.
-- **💎 Credit System:** Users start with 100 free credits. Each generation costs 10 credits.
-- **📂 History & Note Management:** Automatically saves all generated notes to your personal dashboard so you never lose your study materials.
-- **📥 PDF Export:** Download any of your generated notes instantly as a clean, printable PDF (Generated via PDFKit).
-- **🎨 Beautiful UI:** Features a custom, accessible, and responsive "Lavender Mist" pastel theme built with Tailwind CSS and Framer Motion micro-animations.
+- 🧠 **AI Note Generation**: Generate structured, exam-oriented notes, revision points, and long/short questions instantly.
+- 📊 **Visual Learning**: Automatically generate data-driven charts (Pie, Bar, Line) using `Recharts` and flow diagrams using `Mermaid.js`.
+- 📥 **Instant PDF Export**: Download your generated notes as a clean, formatted PDF for offline studying and printing.
+- 🔐 **Seamless Authentication**: Secure, one-click login powered by Firebase Google Auth.
+- 📚 **History & Organization**: Automatically save your past generated notes to a centralized dashboard for easy retrieval.
+- 💳 **Credit System & Pricing**: Built-in tiered pricing system (Starter, Popular, Pro) to manage AI generation credits.
+- 🎨 **Premium UI/UX**: A highly responsive, modern SaaS aesthetic built with Tailwind CSS v4, featuring fluid micro-animations, glassmorphism, and a custom brand palette.
 
-## 🛠️ Technology Stack
+---
 
-### Frontend (Client)
-- **Framework:** React 19 + Vite
-- **Styling:** Tailwind CSS + Custom CSS Variables
-- **Animations:** Framer Motion
-- **State Management:** Redux Toolkit
-- **Routing:** React Router DOM v7
-- **Data Visualization:** Recharts (Graphs) & Mermaid (Diagrams)
-- **Markdown Rendering:** React-Markdown
-- **Authentication:** Firebase Auth (Google Provider)
+## 🛠️ Tech Stack
 
-### Backend (Server)
-- **Runtime:** Node.js
-- **Framework:** Express.js
-- **Database:** MongoDB & Mongoose
-- **AI Integration:** Google Gemini API
-- **Authentication:** JWT (JSON Web Tokens) & HTTP-only Cookies
-- **PDF Generation:** PDFKit
+**Frontend:**
+- **Framework**: React.js (Vite)
+- **Styling**: Tailwind CSS v4 (Custom Design Tokens)
+- **State Management**: Redux Toolkit
+- **Routing**: React Router DOM
+- **Authentication**: Firebase (Google OAuth)
+- **Data Visualization**: Recharts, Mermaid.js
+- **Animations**: Framer Motion (Motion/React)
+- **Markdown Rendering**: React-Markdown
+
+**Backend:**
+- **Runtime**: Node.js
+- **Framework**: Express.js
+- **Database**: MongoDB (Mongoose)
+- **PDF Generation**: PDFKit
+- **Security**: CORS, Cookie-Parser
+
+---
 
 ## 📂 Project Structure
 
@@ -69,18 +68,16 @@ Notely/
 │   └── package.json
 ```
 
-## 🚀 Getting Started (Local Development)
+## 🚀 Getting Started
 
 ### Prerequisites
-- Node.js (v18+ recommended)
-- MongoDB Atlas cluster (or local MongoDB)
-- Google Gemini API Key
-- Firebase Project with Google Auth enabled
+Make sure you have [Node.js](https://nodejs.org/) and [npm](https://www.npmjs.com/) installed on your machine. You will also need a Firebase project and a MongoDB cluster.
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/yourusername/Notely.git
-cd Notely
+git clone https://github.com/yourusername/notely.git
+cd notely
+
 ```
 
 ### 2. Setup the Backend
