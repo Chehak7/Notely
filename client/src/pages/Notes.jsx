@@ -16,7 +16,7 @@ function Notes() {
   const [result, setResult] = useState(null)
   const [error, setError] = useState("")
   return (
-    <div className='min-h-screen bg-[#F7F4FC] font-[Inter] px-6 py-8'>
+    <div className='min-h-screen bg-ds-page font-body px-6 py-8'>
       <motion.header
         initial={{ opacity: 0, y: -15 }}
         animate={{ opacity: 1, y: 0 }}
@@ -24,42 +24,42 @@ function Notes() {
 
         className="mb-10
        rounded-2xl
-       bg-[#EDE9F9]
-       border border-[#E4DEF3]
-       px-8 py-6
+       bg-ds-page
+       border border-ds-border
+       shadow-sm
+       px-8 py-5
        items-start
        flex md:items-center justify-between gap-4 flex-col md:flex-row">
 
         <div onClick={() => navigate("/")} className='cursor-pointer'>
-          <h1 className="text-2xl font-bold font-[Poppins] text-[#372F52]">Notely</h1>
-          <p className="text-sm text-[#6B647F] mt-2">AI-powered exam-oriented notes & revision</p>
+          <h1 className="text-xl font-bold font-heading text-ds-text">Notely</h1>
+          <p className="text-sm text-ds-text-sec mt-1">AI-powered exam-oriented notes & revision</p>
         </div>
 
         <div className='flex items-center gap-4 flex-wrap'>
           <button className='flex items-center gap-2
-        px-4 py-2 rounded-xl
-        bg-[#FBF9F6]
-        border border-[#E4DEF3]
-        text-[#372F52] text-sm' onClick={() => navigate("/Pricing")}>
-            <span className='text-xl text-[#B9AEE0]'><LuDiamond /></span>
-            <span>{credits}</span>
+        px-4 py-2 rounded-full
+        bg-ds-section
+        border border-ds-border
+        text-ds-text text-sm hover:bg-white transition-colors shadow-sm' onClick={() => navigate("/Pricing")}>
+            <span className='text-lg text-ds-accent'><LuDiamond /></span>
+            <span className='font-medium'>{credits}</span>
             <motion.span
               whileHover={{ scale: 1.2 }}
               whileTap={{ scale: 0.97 }}
-              className='ml-2 h-5 w-5 flex items-center justify-center rounded-full bg-[#B9AEE0] text-[#372F52] text-xs font-bold'
+              className='ml-1 h-5 w-5 flex items-center justify-center rounded-full bg-ds-btn-sec-bg text-ds-btn-sec-text text-xs font-bold'
             >
               <LuPlus size={12} />
             </motion.span>
 
           </button>
           <button onClick={() => navigate("/History")}
-            className='px-4 py-3 rounded-xl
-        text-sm font-medium
-        bg-[#B9AEE0]
-        border border-[#E4DEF3]
-        text-[#372F52]
-        hover:bg-[#A79CD6]
-        transition
+            className='px-5 py-2.5 rounded-full
+        text-sm font-semibold font-heading
+        bg-ds-btn-sec-bg
+        text-ds-btn-sec-text
+        hover:bg-[#c7d6ff]
+        transition-colors
         flex flex-row items-center gap-2'>
             <LuFileText /> Your Notes
 
@@ -77,14 +77,14 @@ function Notes() {
         <motion.div
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ repeat: Infinity, duration: 1.2 }}
-          className="text-center text-[#372F52] font-medium mb-6">
+          className="text-center text-ds-text font-medium mb-6">
           Generating exam-focused notes...
         </motion.div>
       )}
 
       {error && (
         <div
-          className="mb-6 text-center text-red-600 font-medium">
+          className="mb-6 text-center text-ds-error font-medium">
           {error}
         </div>
       )}
@@ -94,11 +94,10 @@ function Notes() {
         className="h-64
         rounded-2xl
        flex flex-col items-center justify-center
-       bg-[#FBF9F6]
-       border border-dashed border-[#E4DEF3]
-       text-[#6B647F]
-       shadow-none">
-        <span className="text-4xl mb-3 text-[#B9AEE0]"><LuPen /></span>
+       bg-ds-section
+       border border-dashed border-ds-border
+       text-ds-text-sec">
+        <span className="text-4xl mb-3 text-ds-accent"><LuPen /></span>
         <p className="text-sm">
           Generated Notes will appear here.
         </p>
@@ -118,8 +117,9 @@ function Notes() {
 
         <div className='lg:col-span-3
       rounded-2xl
-      bg-[#FBF9F6]
-      border border-[#E4DEF3]
+      bg-ds-page
+      border border-ds-border
+      shadow-sm
       p-6'>
 
           <FinalResult result={result.data} />

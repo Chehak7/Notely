@@ -94,36 +94,22 @@ function Topicform({ setResult, setLoading, loading, setError }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="rounded-2xl
-      bg-[#FBF9F6]
-      border border-[#E4DEF3]
-      p-8 space-y-6 text-[#372F52]">
-            <input type="text" className='w-full p-3 rounded-xl
-         bg-[#F7F4FC]
-         border border-[#E4DEF3]
-         placeholder-[#8A8398] 
-         text-[#372F52] 
-         focus:outline-none focus:ring-2 focus:ring-[#B9AEE0]' placeholder='Enter topic (e.g. Web Development)'
+      bg-ds-page
+      border border-ds-border
+      shadow-sm
+      p-8 space-y-5 text-ds-text">
+            <input type="text" className='input-base' placeholder='Enter topic (e.g. Web Development)'
                 onChange={(e) => setTopic(e.target.value)}
                 value={topic}
             />
 
-            <input type="text" className='w-full p-3 rounded-xl
-         bg-[#F7F4FC]
-         border border-[#E4DEF3]
-         placeholder-[#8A8398] 
-         text-[#372F52] 
-         focus:outline-none focus:ring-2 focus:ring-[#B9AEE0]'
+            <input type="text" className='input-base'
                 placeholder='Class / Level (e.g. Class 10)'
                 onChange={(e) => setClassLevel(e.target.value)}
                 value={classLevel}
             />
 
-            <input type="text" className='w-full p-3 rounded-xl
-         bg-[#F7F4FC]
-         border border-[#E4DEF3]
-         placeholder-[#8A8398] 
-         text-[#372F52] 
-         focus:outline-none focus:ring-2 focus:ring-[#B9AEE0]'
+            <input type="text" className='input-base'
                 placeholder='Exam Type (e.g. CBSE, JEE, NEET)'
                 onChange={(e) => setExamType(e.target.value)}
                 value={examType}
@@ -139,31 +125,33 @@ function Topicform({ setResult, setLoading, loading, setError }) {
                 whileHover={!loading ? { scale: 1.02 } : {}}
                 whileTap={!loading ? { scale: 0.95 } : {}}
                 disabled={loading}
-                className={`w-full py-3 rounded-xl
-            font-semibold 
+                className={`w-full py-3 rounded-full
+            font-semibold font-heading
             flex items-center justify-center gap-3
-            transition
+            transition-all
             ${loading
-                        ? "bg-[#E4DEF3] text-[#6B647F] cursor-not-allowed"
-                        : "bg-[#B9AEE0] text-[#372F52] hover:bg-[#A79CD6]"
-                    }`}>
+                        ? "bg-ds-section text-ds-text-muted cursor-not-allowed border border-ds-border"
+                        : "text-white"
+                    }`}
+                style={!loading ? { background: 'linear-gradient(135deg, #3B5FE3 0%, #5B7FFF 100%)', boxShadow: '0 4px 20px 0 rgba(59,95,227,0.35)' } : {}}>
                 {loading ? "Generating Notes..." : "Generate Notes"}
 
             </motion.button>
             {loading && <div className='mt-4 space-y-2'>
-                <div className='w-full h-2 rounded-full bg-[#E4DEF3] overflow-hidden'>
+                <div className='w-full h-2 rounded-full bg-ds-section overflow-hidden border border-ds-border'>
                     <motion.div
                         initial={{ width: 0 }}
                         animate={{ width: `${progress}%` }}
                         transition={{ ease: "easeOut", duration: 0.6 }}
-                        className='h-full bg-[#A79CD6]'>
+                        className='h-full rounded-full'
+                        style={{ background: 'linear-gradient(90deg, #3B5FE3 0%, #5B7FFF 100%)' }}>
                     </motion.div>
                 </div>
-                <div className='flex justify-between text-xs text-[#6B647F]'>
+                <div className='flex justify-between text-xs text-ds-text-sec'>
                     <span>{progressText}</span>
                     <span>{progress}%</span>
                 </div>
-                <p className='text-xs text-[#8A8398] text-center'>
+                <p className='text-xs text-ds-text-muted text-center'>
                     This may take upto 2-5 minutes. please do not close or refresh the page.
                 </p>
             </div>}
@@ -175,16 +163,15 @@ function Topicform({ setResult, setLoading, loading, setError }) {
 
 function Toggle({ label, checked, onChange }) {
     return (
-        <div className='flex items-center gap-4 cursor-pointer select-none' onClick={onChange}>
+        <div className='flex items-center gap-3 cursor-pointer select-none' onClick={onChange}>
             <motion.div
                 animate={{
                     backgroundColor: checked
-                        ? "#A79CD6"
-                        : "#E4DEF3"
+                        ? "#4ECDC4"
+                        : "#E5E7EB"
                 }}
                 transition={{ duration: 0.25 }}
-                className='relative w-12 h-6 rounded-full 
-            border border-[#E4DEF3]'>
+                className='relative w-11 h-6 rounded-full border border-ds-border'>
 
                 <motion.div
                     layout
@@ -196,7 +183,7 @@ function Toggle({ label, checked, onChange }) {
 
                 </motion.div>
             </motion.div>
-            <span className={`text-lg transition-colors font-medium ${checked ? "text-[#372F52]" : "text-[#6B647F]"
+            <span className={`text-sm transition-colors font-medium ${checked ? "text-ds-text" : "text-ds-text-sec"
                 }`}>{label}</span>
 
         </div>

@@ -1,29 +1,320 @@
+/* =============================================================
+   NOTELY — CENTRALIZED DESIGN SYSTEM
+   Built for Tailwind v4 (@tailwindcss/vite)
+   All tokens are declared here; pages are NOT changed yet.
+   ============================================================= */
+
 @import "tailwindcss";
 
+/* ─────────────────────────────────────────────
+   1. TAILWIND v4 THEME TOKENS
+   These become Tailwind utility classes automatically:
+   bg-ds-page, text-ds-accent, font-display, shadow-cta, etc.
+   ───────────────────────────────────────────── */
 @theme {
-  --color-honey-page: #F7F4FC;
-  --color-honey-surface: #FBF9F6;
-  --color-honey-nav: #EDE9F9;
-  --color-honey-accent: #B9AEE0;
-  --color-honey-accent-hover: #A79CD6;
-  --color-honey-accent-light: #F6DDE8;
-  --color-honey-text: #372F52;
-  --color-honey-text-sec: #6B647F;
-  --color-honey-text-muted: #8A8398;
-  --color-honey-border: #E4DEF3;
-  --color-honey-success: #7FA870;
-  --color-honey-error: #C07B9F;
-  
-  --font-marcellus: "Poppins", sans-serif;
-  --font-nunito: "Inter", sans-serif;
+
+  /* ── Colors — Backgrounds ────────────────── */
+  --color-ds-page:            #FFFFFF;   /* primary page background            */
+  --color-ds-section:         #F8FAFC;   /* alternate section / off-white      */
+
+  /* ── Colors — Text ───────────────────────── */
+  --color-ds-text:            #1A1A2E;   /* primary / dark navy-charcoal       */
+  --color-ds-text-sec:        #6B7280;   /* secondary / slate gray             */
+  --color-ds-text-muted:      #9CA3AF;   /* muted / placeholder                */
+
+  /* ── Colors — Brand accent (teal) ────────── */
+  --color-ds-accent:          #4ECDC4;
+  --color-ds-accent-hover:    #3DBFB4;
+  --color-ds-accent-light:    #D1F5F2;   /* very light teal tint               */
+
+  /* ── Colors — CTA blue gradient ─────────── */
+  --color-ds-cta:             #3B5FE3;   /* gradient left stop                 */
+  --color-ds-cta-end:         #5B7FFF;   /* gradient right stop                */
+  --color-ds-cta-hover:       #2F4FC8;   /* darker hover                       */
+
+  /* ── Colors — Secondary button ───────────── */
+  --color-ds-btn-sec-bg:      #DCE6FF;   /* soft lavender-blue fill            */
+  --color-ds-btn-sec-text:    #3B5FE3;   /* blue text                          */
+
+  /* ── Colors — Highlight ("AI" word) ─────── */
+  --color-ds-highlight:       #E9EA6B;   /* soft yellow                        */
+
+  /* ── Colors — Dark surfaces (sidebar) ────── */
+  --color-ds-dark-from:       #4B5563;   /* slate gray                         */
+  --color-ds-dark-to:         #1F2937;   /* near-black                         */
+  --color-ds-dark-surface:    #111827;   /* deepest surface                    */
+
+  /* ── Colors — Borders & dividers ─────────── */
+  --color-ds-border:          #E5E7EB;
+  --color-ds-border-focus:    #3B5FE3;
+
+  /* ── Colors — State ──────────────────────── */
+  --color-ds-success:         #10B981;
+  --color-ds-error:           #EF4444;
+  --color-ds-warning:         #F59E0B;
+
+  /* ── Typography — Font stacks ────────────── */
+  --font-display:  "Baloo 2", "Poppins", ui-rounded, sans-serif;   /* display / hero headings */
+  --font-heading:  "Poppins", "Baloo 2", ui-rounded, sans-serif;   /* section headings        */
+  --font-body:     "Inter", "Nunito Sans", ui-sans-serif, sans-serif;  /* body / UI text      */
+  --font-soft:     "Nunito Sans", "Inter", ui-sans-serif, sans-serif;  /* softer body alt     */
+
+  /* ── Border Radius ───────────────────────── */
+  --radius-xs:     4px;
+  --radius-sm:     8px;
+  --radius-md:     12px;
+  --radius-lg:     16px;     /* standard card corners  */
+  --radius-xl:     20px;     /* large card corners     */
+  --radius-2xl:    24px;
+  --radius-pill:   9999px;   /* buttons — fully rounded */
+
+  /* ── Shadows ─────────────────────────────── */
+  --shadow-card:        0 2px 12px 0 rgba(0,0,0,0.06), 0 1px 3px 0 rgba(0,0,0,0.04);
+  --shadow-card-hover:  0 8px 32px 0 rgba(0,0,0,0.10), 0 2px 8px 0 rgba(0,0,0,0.06);
+  --shadow-cta:         0 4px 20px 0 rgba(59,95,227,0.35);
+  --shadow-cta-hover:   0 6px 28px 0 rgba(59,95,227,0.50);
+  --shadow-accent:      0 4px 16px 0 rgba(78,205,196,0.30);
+
+  /* ── Transitions ─────────────────────────── */
+  --ease-smooth:     cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --duration-fast:   150ms;
+  --duration-base:   220ms;
+  --duration-slow:   380ms;
 }
 
 
+/* ─────────────────────────────────────────────
+   2. NATIVE CSS CUSTOM PROPERTIES  (var(--ds-*))
+   Parallel set so non-Tailwind contexts
+   (inline styles, third-party libs) can reference
+   the same values.
+   ───────────────────────────────────────────── */
+:root {
+  /* Colors */
+  --ds-page:            #FFFFFF;
+  --ds-section:         #F8FAFC;
+  --ds-text:            #1A1A2E;
+  --ds-text-sec:        #6B7280;
+  --ds-text-muted:      #9CA3AF;
+  --ds-accent:          #4ECDC4;
+  --ds-accent-hover:    #3DBFB4;
+  --ds-accent-light:    #D1F5F2;
+  --ds-cta:             #3B5FE3;
+  --ds-cta-end:         #5B7FFF;
+  --ds-cta-hover:       #2F4FC8;
+  --ds-btn-sec-bg:      #DCE6FF;
+  --ds-btn-sec-text:    #3B5FE3;
+  --ds-highlight:       #E9EA6B;
+  --ds-dark-from:       #4B5563;
+  --ds-dark-to:         #1F2937;
+  --ds-dark-surface:    #111827;
+  --ds-border:          #E5E7EB;
+  --ds-border-focus:    #3B5FE3;
+  --ds-success:         #10B981;
+  --ds-error:           #EF4444;
+  --ds-warning:         #F59E0B;
+
+  /* Font stacks */
+  --ds-font-display:  "Baloo 2", "Poppins", ui-rounded, sans-serif;
+  --ds-font-heading:  "Poppins", "Baloo 2", ui-rounded, sans-serif;
+  --ds-font-body:     "Inter", "Nunito Sans", ui-sans-serif, sans-serif;
+  --ds-font-soft:     "Nunito Sans", "Inter", ui-sans-serif, sans-serif;
+
+  /* Border radius */
+  --ds-radius-xs:    4px;
+  --ds-radius-sm:    8px;
+  --ds-radius-md:    12px;
+  --ds-radius-lg:    16px;
+  --ds-radius-xl:    20px;
+  --ds-radius-2xl:   24px;
+  --ds-radius-pill:  9999px;
+
+  /* Shadows */
+  --ds-shadow-card:       0 2px 12px 0 rgba(0,0,0,0.06), 0 1px 3px 0 rgba(0,0,0,0.04);
+  --ds-shadow-card-hover: 0 8px 32px 0 rgba(0,0,0,0.10), 0 2px 8px 0 rgba(0,0,0,0.06);
+  --ds-shadow-cta:        0 4px 20px 0 rgba(59,95,227,0.35);
+  --ds-shadow-cta-hover:  0 6px 28px 0 rgba(59,95,227,0.50);
+  --ds-shadow-accent:     0 4px 16px 0 rgba(78,205,196,0.30);
+
+  /* Transitions */
+  --ds-ease:          cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ds-duration-fast: 150ms;
+  --ds-duration-base: 220ms;
+  --ds-duration-slow: 380ms;
+}
+
+
+/* ─────────────────────────────────────────────
+   3. BASE TYPOGRAPHY RESET
+   Wire font families + global defaults into
+   html / body so everything inherits cleanly.
+   ───────────────────────────────────────────── */
+html {
+  font-family:             var(--ds-font-body);
+  color:                   var(--ds-text);
+  background:              var(--ds-page);
+  -webkit-font-smoothing:  antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering:          optimizeLegibility;
+}
+
+body {
+  font-family: var(--ds-font-body);
+  font-size:   16px;
+  line-height: 1.6;
+  color:       var(--ds-text);
+  background:  var(--ds-page);
+}
+
+/* Headings inherit the heading/display stack */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ds-font-heading);
+  font-weight: 600;
+  line-height: 1.2;
+  color:       var(--ds-text);
+}
+
+
+/* ─────────────────────────────────────────────
+   4. REUSABLE UTILITY CLASSES
+   Semantic helpers components can apply as
+   className="btn-cta" etc., independent of
+   Tailwind utility classes.
+   ───────────────────────────────────────────── */
+
+/* — Primary CTA button — royal-blue gradient + glow */
+.btn-cta {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             0.5rem;
+  padding:         0.625rem 1.75rem;
+  border-radius:   var(--ds-radius-pill);
+  background:      linear-gradient(135deg, var(--ds-cta) 0%, var(--ds-cta-end) 100%);
+  color:           #ffffff;
+  font-family:     var(--ds-font-heading);
+  font-weight:     600;
+  font-size:       0.9375rem;
+  border:          none;
+  cursor:          pointer;
+  box-shadow:      var(--ds-shadow-cta);
+  transition:      background    var(--ds-duration-base) var(--ds-ease),
+                   box-shadow    var(--ds-duration-base) var(--ds-ease),
+                   transform     var(--ds-duration-fast) var(--ds-ease);
+}
+.btn-cta:hover  { background: linear-gradient(135deg, var(--ds-cta-hover) 0%, var(--ds-cta) 100%); box-shadow: var(--ds-shadow-cta-hover); transform: translateY(-1px); }
+.btn-cta:active { transform: translateY(0); }
+
+/* — Secondary button — soft lavender-blue fill, no border */
+.btn-sec {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             0.5rem;
+  padding:         0.625rem 1.75rem;
+  border-radius:   var(--ds-radius-pill);
+  background:      var(--ds-btn-sec-bg);
+  color:           var(--ds-btn-sec-text);
+  font-family:     var(--ds-font-heading);
+  font-weight:     600;
+  font-size:       0.9375rem;
+  border:          none;
+  cursor:          pointer;
+  transition:      background var(--ds-duration-base) var(--ds-ease),
+                   transform  var(--ds-duration-fast) var(--ds-ease);
+}
+.btn-sec:hover  { background: #c7d6ff; transform: translateY(-1px); }
+.btn-sec:active { transform: translateY(0); }
+
+/* — Accent teal button */
+.btn-accent {
+  display:         inline-flex;
+  align-items:     center;
+  justify-content: center;
+  gap:             0.5rem;
+  padding:         0.625rem 1.75rem;
+  border-radius:   var(--ds-radius-pill);
+  background:      var(--ds-accent);
+  color:           var(--ds-text);
+  font-family:     var(--ds-font-heading);
+  font-weight:     600;
+  font-size:       0.9375rem;
+  border:          none;
+  cursor:          pointer;
+  box-shadow:      var(--ds-shadow-accent);
+  transition:      background var(--ds-duration-base) var(--ds-ease),
+                   box-shadow  var(--ds-duration-base) var(--ds-ease),
+                   transform   var(--ds-duration-fast) var(--ds-ease);
+}
+.btn-accent:hover  { background: var(--ds-accent-hover); transform: translateY(-1px); }
+.btn-accent:active { transform: translateY(0); }
+
+/* — Card — white surface, soft shadow */
+.card {
+  background:    var(--ds-page);
+  border-radius: var(--ds-radius-lg);
+  box-shadow:    var(--ds-shadow-card);
+  border:        1px solid var(--ds-border);
+  transition:    box-shadow var(--ds-duration-base) var(--ds-ease),
+                 transform  var(--ds-duration-base) var(--ds-ease);
+}
+.card:hover { box-shadow: var(--ds-shadow-card-hover); transform: translateY(-2px); }
+
+/* — Section card — uses off-white background */
+.card-section {
+  background:    var(--ds-section);
+  border-radius: var(--ds-radius-lg);
+  box-shadow:    var(--ds-shadow-card);
+  border:        1px solid var(--ds-border);
+}
+
+/* — Highlight text (e.g. the word "AI" in hero) */
+.text-highlight {
+  color:           var(--ds-highlight);
+  display:         inline;
+}
+
+/* — Text gradient (headings) */
+.text-gradient-brand {
+  background:              linear-gradient(135deg, var(--ds-cta) 0%, var(--ds-accent) 100%);
+  -webkit-background-clip: text;
+  background-clip:         text;
+  color:                   transparent;
+  display:                 inline;
+}
+
+/* — Input base */
+.input-base {
+  width:         100%;
+  padding:       0.625rem 1rem;
+  border-radius: var(--ds-radius-md);
+  border:        1.5px solid var(--ds-border);
+  background:    var(--ds-page);
+  color:         var(--ds-text);
+  font-family:   var(--ds-font-body);
+  font-size:     0.9375rem;
+  outline:       none;
+  transition:    border-color var(--ds-duration-fast) var(--ds-ease),
+                 box-shadow   var(--ds-duration-fast) var(--ds-ease);
+}
+.input-base::placeholder { color: var(--ds-text-muted); }
+.input-base:focus        { border-color: var(--ds-border-focus); box-shadow: 0 0 0 3px rgba(59,95,227,0.12); }
+
+/* — Divider */
+.divider {
+  height:     1px;
+  background: var(--ds-border);
+  border:     none;
+}
+
+
+/* ─────────────────────────────────────────────
+   5. GLOBAL SCROLLBAR SUPPRESSION  (unchanged)
+   ───────────────────────────────────────────── */
 * {
-scrollbar-width: none;  /* Firefox */ 
- -ms-overflow-style: none;   /* IE / Edge */
+  scrollbar-width:    none;   /* Firefox         */
+  -ms-overflow-style: none;   /* IE / Edge       */
 }
-
-*::-webkit-scrollbar { 
-    display: none;  /* Chrome / Safari */
+*::-webkit-scrollbar {
+  display: none;              /* Chrome / Safari */
 }
