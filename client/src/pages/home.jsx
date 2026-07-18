@@ -4,7 +4,7 @@ import Footer from '../components/Footer'
 import { motion } from 'motion/react'
 import img from "../assets/img1.png"
 import { useNavigate } from 'react-router-dom'
-import { LuBook, LuFolder, LuChartBar, LuDownload, LuPlay, LuUsers } from "react-icons/lu";
+import { LuBook, LuFolder, LuChartBar, LuDownload, LuPlay } from "react-icons/lu";
 
 function Home() {
   const navigate = useNavigate()
@@ -55,19 +55,6 @@ function Home() {
               </motion.button>
             </div>
 
-            {/* Social Proof */}
-            <div className="mt-12 flex items-center gap-4">
-              <div className="flex -space-x-3">
-                {[1,2,3,4,5].map((i) => (
-                  <img key={i} className="w-10 h-10 rounded-full border-2 border-white bg-gray-100" src={`https://api.dicebear.com/7.x/notionists/svg?seed=${i+10}&backgroundColor=e5e7eb`} alt={`user ${i}`} />
-                ))}
-              </div>
-              <div className="flex flex-col">
-                <div className="flex text-[#F59E0B] text-sm tracking-widest">★★★★★</div>
-                <span className="text-sm text-ds-text-sec font-medium mt-0.5">Used by over <strong className="text-ds-text font-bold">10,000+</strong> students</span>
-              </div>
-            </div>
-
           </motion.div>
         </div>
 
@@ -97,19 +84,6 @@ function Home() {
         </motion.div>
       </section>
 
-      {/* Trust Logos Section */}
-      <section className="border-t border-b border-ds-border bg-ds-page py-12">
-        <div className="max-w-7xl mx-auto px-6 text-center">
-          <p className="text-xs font-semibold text-ds-text-muted mb-8 uppercase tracking-widest">Trusted by students & teams everywhere</p>
-          <div className="flex flex-wrap justify-center items-center gap-x-16 gap-y-8 opacity-50 grayscale transition-opacity hover:opacity-70">
-            <div className="text-xl font-bold font-display text-ds-text flex items-center gap-2"><LuBook size={24} /> EduLearn</div>
-            <div className="text-xl font-bold font-display text-ds-text flex items-center gap-2"><LuUsers size={24} /> CampusConnect</div>
-            <div className="text-xl font-bold font-display text-ds-text flex items-center gap-2"><LuPlay size={24} /> VideoStudy</div>
-            <div className="text-xl font-bold font-display text-ds-text flex items-center gap-2"><LuChartBar size={24} /> DataEd</div>
-            <div className="text-xl font-bold font-display text-ds-text flex items-center gap-2"><LuFolder size={24} /> NoteStack</div>
-          </div>
-        </div>
-      </section>
 
       {/* Product Preview Section */}
       <section className="bg-ds-section py-24">
