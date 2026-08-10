@@ -200,7 +200,7 @@ function MenuItem({ onClick, text, red }) {
       className={`w-full text-left px-4 py-2.5 text-sm font-medium
       transition-colors rounded-xl cursor-pointer
       ${red
-          ? "text-ds-error hover:bg-red-50"
+          ? "text-ds-error hover:bg-ds-section"
           : "text-ds-text-sec hover:bg-ds-section"
         }
     `}>

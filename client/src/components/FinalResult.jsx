@@ -65,7 +65,7 @@ function FinalResult({ result }) {
             onClick={() => setQuickRevision(!quickRevision)}
             className={`px-4 py-2 rounded-full border border-ds-border text-sm font-medium font-heading transition ${quickRevision
               ? 'bg-ds-btn-sec-bg text-ds-btn-sec-text'
-              : 'bg-ds-section text-ds-text hover:bg-white'
+              : 'bg-ds-section text-ds-text hover:bg-ds-surface'
               }`}>
             {quickRevision ? 'Exit Revision Mode' : 'Quick Revision (5 min)'}
           </button>

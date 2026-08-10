@@ -41,7 +41,7 @@ function Notes() {
         px-4 py-2 rounded-full
         bg-ds-section
         border border-ds-border
-        text-ds-text text-sm hover:bg-white transition-colors shadow-sm' onClick={() => navigate("/Pricing")}>
+        text-ds-text text-sm hover:bg-ds-surface transition-colors shadow-sm' onClick={() => navigate("/Pricing")}>
             <span className='text-lg text-ds-accent'><LuDiamond /></span>
             <span className='font-medium'>{credits}</span>
             <motion.span
@@ -58,7 +58,7 @@ function Notes() {
         text-sm font-semibold font-heading
         bg-ds-btn-sec-bg
         text-ds-btn-sec-text
-        hover:bg-[#c7d6ff]
+        hover:bg-ds-btn-sec-hover
         transition-colors
         flex flex-row items-center gap-2'>
             <LuFileText /> Your Notes

@@ -7,10 +7,13 @@ import Notes from './pages/Notes.jsx'
 import Pricing from './pages/Pricing.jsx'
 import { getCurrentUser } from './services/api'
 import { useDispatch, useSelector } from 'react-redux'
+import ThemeToggle from './components/ThemeToggle.jsx'
+
 export const serverUrl = "https://notelyserver.onrender.com"
 
 function App() {
   const dispatch = useDispatch()
+
   useEffect(() => {
     getCurrentUser(dispatch)
   }, [dispatch])
@@ -18,7 +21,7 @@ function App() {
   const { userData } = useSelector((state) => state.user)
 
   return (
-    < >
+    <>
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/auth' element={userData ? <Navigate to='/' replace /> : <Auth />} />
@@ -26,6 +29,7 @@ function App() {
         <Route path='/Notes' element={userData ? <Notes /> : <Navigate to='/' replace />} />
         <Route path='/Pricing' element={userData ? <Pricing /> : <Navigate to='/' replace />} />
       </Routes>
+      <ThemeToggle />
     </>
   )
 }

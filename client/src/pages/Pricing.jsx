@@ -101,9 +101,9 @@ function PricingCard({ title, price, amount, credits, description, features, pop
       onClick={() => setSelectedPrice(amount)}
       whileHover={{ y: -6 }}
       className={`relative cursor-pointer
-      rounded-[24px] p-8 bg-white
+      rounded-[24px] p-8 bg-ds-surface
       transition-all duration-300
-      ${popular ? 'md:scale-105 z-10 shadow-2xl border-2 border-ds-accent' : 'shadow-lg border border-gray-100'}
+      ${popular ? 'md:scale-105 z-10 shadow-2xl border-2 border-ds-accent' : 'shadow-lg border border-ds-border'}
       ${isSelected && !popular ? 'border-ds-border-focus ring-4 ring-ds-border-focus/10 shadow-2xl scale-[1.02] z-20' : ''}
     `}>
       {popular && 
@@ -126,7 +126,7 @@ function PricingCard({ title, price, amount, credits, description, features, pop
         <p className='text-sm text-ds-text-sec mt-2 h-10'>{description}</p>
       </div>
 
-      <div className='mt-6 text-center border-b border-gray-100 pb-8'>
+      <div className='mt-6 text-center border-b border-ds-border pb-8'>
         <p className='text-4xl lg:text-5xl font-extrabold font-display text-ds-text'>{price}</p>
         <p className='text-sm font-semibold text-ds-accent mt-2'>{credits}</p>
       </div>
@@ -152,7 +152,7 @@ function PricingCard({ title, price, amount, credits, description, features, pop
             ? "bg-ds-section cursor-not-allowed text-ds-text-muted border border-ds-border"
             : isHighlighted
               ? "text-white hover:opacity-90"
-              : "bg-ds-btn-sec-bg text-ds-btn-sec-text hover:bg-[#c7d6ff]"}`}
+              : "bg-ds-btn-sec-bg text-ds-btn-sec-text hover:bg-ds-btn-sec-hover"}`}
         style={(!isPayingThisCard && isHighlighted) ? { background: 'linear-gradient(135deg, #3B5FE3 0%, #5B7FFF 100%)', boxShadow: '0 4px 20px 0 rgba(59,95,227,0.35)' } : {}}
       >
         {isPayingThisCard ? "Processing..." : "Select Plan"}

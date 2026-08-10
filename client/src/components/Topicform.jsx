@@ -165,18 +165,13 @@ function Toggle({ label, checked, onChange }) {
     return (
         <div className='flex items-center gap-3 cursor-pointer select-none' onClick={onChange}>
             <motion.div
-                animate={{
-                    backgroundColor: checked
-                        ? "#4ECDC4"
-                        : "#E5E7EB"
-                }}
                 transition={{ duration: 0.25 }}
-                className='relative w-11 h-6 rounded-full border border-ds-border'>
+                className={`relative w-11 h-6 rounded-full border border-ds-border ${checked ? 'bg-ds-accent' : 'bg-ds-border'}`}>
 
                 <motion.div
                     layout
                     transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                    className='absolute top-0.5 w-5 h-5 rounded-full bg-white shadow-sm'
+                    className='absolute top-0.5 w-5 h-5 rounded-full bg-ds-surface shadow-sm'
                     style={{
                         left: checked ? "1.6rem" : "0.25rem",
                     }}>

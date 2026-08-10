@@ -49,9 +49,7 @@ function Sidebar({ result }) {
             </section>
 
 
-            <section className='rounded-lg
-                            bg-[#F7F4FC]
-                             border border-[#E4DEF3] p-3'>
+            <section className='rounded-lg bg-ds-section border border-ds-border p-3'>
 
                 <p className='text-sm font-semibold text-ds-text-sec mb-1 flex items-center gap-1'>
                     <LuFlame className="text-ds-error" /> Exam Importance
